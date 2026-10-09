@@ -22,3 +22,15 @@ Output:
 - final subset of selected items
 - total weight of the selected items
 - total value of the selected items
+
+# Application to Problem A4
+
+The 0/1 Knapsack problem can also represent portfolio or project selection under a limited budget.
+
+In this context:
+- Each item represents a project
+- Each item's weight represents the project's cost
+- Each item's value represents the project's benefit
+- The knapsack's maximum capacity represents the available budget
+
+We want to select the subset of projects that maximize the benefit while keeping the total cost of the projects lower than the available budget.
