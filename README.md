@@ -9,7 +9,7 @@ Deadline: October 21, 2026
 
 ### 1. Modelling Domain Analysis
 - [ ] Analysis of the 0/1 Knapsack problem.
-- [ ] Collect 3 concrete Knapsack problem instances of different types and sizes.
+- [ ] Collect 3 concrete Knapsack problem instances of different sizes.
 - [ ] Identify the concepts, attributes, and relationships of both Problem and Solution DSL.
 - [ ] Document how Problem DSL concepts map to Solution DSL elements, supported by references.
 

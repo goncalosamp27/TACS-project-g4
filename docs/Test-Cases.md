@@ -10,13 +10,13 @@
 
 | Project | Cost | Benefit |
 |-|-|-|
-| 1 | 12 | 24 |
-| 2 | 7 | 13 |
-| 3 | 11 | 23 |
-| 4 | 8 | 15 |
-| 5 | 9 | 16 |
+| A | 12 | 24 |
+| B | 7 | 13 |
+| C | 11 | 23 |
+| D | 8 | 15 |
+| E | 9 | 16 |
 
-Optimal solution: [2, 3, 4]
+Optimal solution: [B, C, D]
 Total cost: 26
 Total benefit: 51
 
@@ -28,15 +28,15 @@ Total benefit: 51
 
 | Project | Cost | Benefit |
 |-|-|-|
-| 1 | 31 | 70 |
-| 2 | 10 | 20 |
-| 3 | 20 | 39 |
-| 4 | 19 | 37 |
-| 5 | 4 | 7 |
-| 6 | 3 | 5 |
-| 7 | 6 | 10 |
+| A | 31 | 70 |
+| B | 10 | 20 |
+| C | 20 | 39 |
+| D | 19 | 37 |
+| E | 4 | 7 |
+| F | 3 | 5 |
+| G | 6 | 10 |
 
-Optimal solution: [1, 4]
+Optimal solution: [A, D]
 Total cost: 50
 Total benefit: 107
 
@@ -48,17 +48,17 @@ Total benefit: 107
 
 | Project | Cost | Benefit |
 |-|-|-|
-| 1 | 55 | 95 |
-| 2 | 10 | 4 |
-| 3 | 47 | 60 |
-| 4 | 5 | 32 |
-| 5 | 4 | 23 |
-| 6 | 50 | 72 |
-| 7 | 8 | 80 |
-| 8 | 61 | 62 |
-| 9 | 85 | 65 |
-| 10 | 87 | 46 |
+| A | 55 | 95 |
+| B | 10 | 4 |
+| C | 47 | 60 |
+| D | 5 | 32 |
+| E | 4 | 23 |
+| F | 50 | 72 |
+| G | 8 | 80 |
+| H | 61 | 62 |
+| I | 85 | 65 |
+| J | 87 | 46 |
 
-Optimal solution: [2, 3, 4, 8, 9, 10]
+Optimal solution: [B, C, D, H, I, J]
 Total cost: 269
 Total benefit: 295
