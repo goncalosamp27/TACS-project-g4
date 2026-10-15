@@ -20,14 +20,5 @@ This Domain Specific Language will convert the Problem-DSL into a model of a mat
 ## Domain Rules
 
 - R1: In the same QuboModel, each BinaryVariable must have an unique name
-- R2:  
+- R2: 
 
-- R1: The budget of the problem must be a non-negative integer
-- R2: Each project's cost must be a non-negative integer
-- R3: Each project's benefit must be a non-negative integer
-- R4: In the same SelectionProblem, each Project must have an unique id
-- R5: A SelectionProblem must have at least one candidate project
-- R6: All Projects referenced by a SelectionResult must belong to the same SelectionProblem the SelectionResult belongs to
-- R7: The sum of the benefits of the Projects that belong in a SelectionResult must equal its totalBenefit
-- R8: The sum of the costs of the Projects that belong in a SelectionResult must equal its totalCost
-- R9: The total cost of a SelectionResult must not exceed the SelecionProblem's budget
