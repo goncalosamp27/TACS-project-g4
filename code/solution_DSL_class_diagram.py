@@ -11,6 +11,8 @@ from besser.BUML.metamodel.structural import (
     TimeType, DateType, DateTimeType, TimeDeltaType,
     AnyType, Constraint, AssociationClass, Metadata, MethodImplementationType
 )
+from besser.BUML.metamodel.object import ObjectModel
+from besser.BUML.metamodel.project import Project
 
 # Classes
 QuboModel = Class(name="QuboModel")
@@ -18,107 +20,107 @@ BinaryVariable = Class(name="BinaryVariable")
 LinearTerm = Class(name="LinearTerm")
 QuadraticTerm = Class(name="QuadraticTerm")
 
-# QuboModel class attributes and methods
+# Attributes
 QuboModel_constant: Property = Property(name="constant", type=IntegerType)
-QuboModel.attributes={QuboModel_constant}
+QuboModel.attributes = {QuboModel_constant}
 
-# BinaryVariable class attributes and methods
 BinaryVariable_name: Property = Property(name="name", type=StringType)
-BinaryVariable.attributes={BinaryVariable_name}
+BinaryVariable.attributes = {BinaryVariable_name}
 
-# LinearTerm class attributes and methods
 LinearTerm_coefficient: Property = Property(name="coefficient", type=IntegerType)
-LinearTerm.attributes={LinearTerm_coefficient}
+LinearTerm.attributes = {LinearTerm_coefficient}
 
-# QuadraticTerm class attributes and methods
 QuadraticTerm_coefficient: Property = Property(name="coefficient", type=IntegerType)
-QuadraticTerm.attributes={QuadraticTerm_coefficient}
+QuadraticTerm.attributes = {QuadraticTerm_coefficient}
 
 # Relationships
 QuboModel_BinaryVariable: BinaryAssociation = BinaryAssociation(
     name="QuboModel_BinaryVariable",
     ends={
-        Property(name="qubomodel", type=QuboModel, multiplicity=Multiplicity(1, 1)),
+        Property(name="qubomodel_bv", type=QuboModel, multiplicity=Multiplicity(1, 1)),
         Property(name="binaryVariables", type=BinaryVariable, multiplicity=Multiplicity(0, 9999), is_composite=True)
     }
 )
-LinearTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
-    name="LinearTerm_BinaryVariable",
-    ends={
-        Property(name="linearterm", type=LinearTerm, multiplicity=Multiplicity(0, 9999)),
-        Property(name="binaryVariable", type=BinaryVariable, multiplicity=Multiplicity(1, 1))
-    }
-)
-QuadraticTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
-    name="QuadraticTerm_BinaryVariable",
-    ends={
-        Property(name="quadraticterm", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999)),
-        Property(name="binaryVariables", type=BinaryVariable, multiplicity=Multiplicity(2, 2))
-    }
-)
-QuboModel_QuadraticTerm: BinaryAssociation = BinaryAssociation(
-    name="QuboModel_QuadraticTerm",
-    ends={
-        Property(name="qubomodel", type=QuboModel, multiplicity=Multiplicity(1, 1)),
-        Property(name="quadraticTerms", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999), is_composite=True)
-    }
-)
+
 QuboModel_LinearTerm: BinaryAssociation = BinaryAssociation(
     name="QuboModel_LinearTerm",
     ends={
-        Property(name="qubomodel", type=QuboModel, multiplicity=Multiplicity(1, 1)),
+        Property(name="qubomodel_lt", type=QuboModel, multiplicity=Multiplicity(1, 1)),
         Property(name="linearTerms", type=LinearTerm, multiplicity=Multiplicity(0, 9999), is_composite=True)
     }
 )
 
+QuboModel_QuadraticTerm: BinaryAssociation = BinaryAssociation(
+    name="QuboModel_QuadraticTerm",
+    ends={
+        Property(name="qubomodel_qt", type=QuboModel, multiplicity=Multiplicity(1, 1)),
+        Property(name="quadraticTerms", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999), is_composite=True)
+    }
+)
 
-# OCL Constraints
+LinearTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
+    name="LinearTerm_BinaryVariable",
+    ends={
+        Property(name="linearterm_owner", type=LinearTerm, multiplicity=Multiplicity(0, 9999)),
+        Property(name="linearVariable", type=BinaryVariable, multiplicity=Multiplicity(1, 1))
+    }
+)
+
+QuadraticTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
+    name="QuadraticTerm_BinaryVariable",
+    ends={
+        Property(name="quadraticterm_owner", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999)),
+        Property(name="variables", type=BinaryVariable, multiplicity=Multiplicity(2, 2))
+    }
+)
+
+# OCL Constraints 
 UniqueVariableNames: Constraint = Constraint(
     name="UniqueVariableNames",
     context=QuboModel,
-    expression="context QuboModel inv UniqueVariableNames:     self.binaryVariables->isUnique(name)",
+    expression="context QuboModel inv UniqueVariableNames: self.binaryVariables->isUnique(name)",
     language="OCL"
 )
 UniqueLinearTermPerVariable: Constraint = Constraint(
     name="UniqueLinearTermPerVariable",
     context=QuboModel,
-    expression="context QuboModel inv UniqueLinearTermPerVariable:     self.linearTerms->isUnique(binaryVariable)",
+    expression="context QuboModel inv UniqueLinearTermPerVariable: self.linearTerms->isUnique(linearVariable)",
     language="OCL"
 )
 UniqueQuadraticTermPerPair: Constraint = Constraint(
     name="UniqueQuadraticTermPerPair",
     context=QuboModel,
-    expression="context QuboModel inv UniqueQuadraticTermPerPair:     self.quadraticTerms->forAll(t1 : QuadraticTerm, t2 : QuadraticTerm |          t1 <> t2 implies not (             t1.binaryVariables->includes(t2.binaryVariables->first()) and              t1.binaryVariables->includes(t2.binaryVariables->last())         )     )",
+    expression="context QuboModel inv UniqueQuadraticTermPerPair: self.quadraticTerms->forAll(t1, t2 | t1 <> t2 implies not (t1.variables->forAll(v | t2.variables->includes(v))))",
     language="OCL"
 )
 MaxFactorizedLinearTerms: Constraint = Constraint(
     name="MaxFactorizedLinearTerms",
     context=QuboModel,
-    expression="context QuboModel inv MaxFactorizedLinearTerms:     self.linearTerms->forAll(t1, t2 |          t1 <> t2 implies t1.binaryVariable <> t2.binaryVariable     )",
+    expression="context QuboModel inv MaxFactorizedLinearTerms: self.linearTerms->forAll(t1, t2 | t1 <> t2 implies t1.linearVariable <> t2.linearVariable)",
     language="OCL"
 )
 MaxFactorizedQuadraticTerms: Constraint = Constraint(
     name="MaxFactorizedQuadraticTerms",
     context=QuboModel,
-    expression="context QuboModel inv MaxFactorizedQuadraticTerms:     self.quadraticTerms->forAll(t1 : QuadraticTerm, t2 : QuadraticTerm |          t1 <> t2 implies not (             t1.binaryVariables->includes(t2.binaryVariables->first()) and              t1.binaryVariables->includes(t2.binaryVariables->last())         )     )",
+    expression="context QuboModel inv MaxFactorizedQuadraticTerms: self.quadraticTerms->forAll(t1, t2 | t1 <> t2 implies not (t1.variables->forAll(v | t2.variables->includes(v))))",
     language="OCL"
 )
 DistinctVariables: Constraint = Constraint(
     name="DistinctVariables",
     context=QuadraticTerm,
-    expression="context QuadraticTerm inv DistinctVariables:     self.binaryVariables->first() <> self.binaryVariables->last()",
+    expression="context QuadraticTerm inv DistinctVariables: self.variables->size() = 2",
     language="OCL"
 )
 NonZeroQuadraticCoefficient: Constraint = Constraint(
     name="NonZeroQuadraticCoefficient",
     context=QuadraticTerm,
-    expression="context QuadraticTerm inv NonZeroQuadraticCoefficient:     self.coefficient <> 0",
+    expression="context QuadraticTerm inv NonZeroQuadraticCoefficient: self.coefficient <> 0",
     language="OCL"
 )
 NonZeroLinearCoefficient: Constraint = Constraint(
     name="NonZeroLinearCoefficient",
     context=LinearTerm,
-    expression="context LinearTerm inv NonZeroLinearCoefficient:     self.coefficient <> 0",
+    expression="context LinearTerm inv NonZeroLinearCoefficient: self.coefficient <> 0",
     language="OCL"
 )
 
@@ -126,12 +128,26 @@ NonZeroLinearCoefficient: Constraint = Constraint(
 domain_model = DomainModel(
     name="Class_Diagram",
     types={QuboModel, BinaryVariable, LinearTerm, QuadraticTerm},
-    associations={QuboModel_BinaryVariable, LinearTerm_BinaryVariable, QuadraticTerm_BinaryVariable, QuboModel_QuadraticTerm, QuboModel_LinearTerm},
-    constraints={UniqueVariableNames, UniqueLinearTermPerVariable, UniqueQuadraticTermPerPair, MaxFactorizedLinearTerms, MaxFactorizedQuadraticTerms, DistinctVariables, NonZeroQuadraticCoefficient, NonZeroLinearCoefficient},
+    associations={
+        QuboModel_BinaryVariable,
+        QuboModel_LinearTerm,
+        QuboModel_QuadraticTerm,
+        LinearTerm_BinaryVariable,
+        QuadraticTerm_BinaryVariable
+    },
+    constraints={
+        UniqueVariableNames,
+        UniqueLinearTermPerVariable,
+        UniqueQuadraticTermPerPair,
+        MaxFactorizedLinearTerms,
+        MaxFactorizedQuadraticTerms,
+        DistinctVariables,
+        NonZeroQuadraticCoefficient,
+        NonZeroLinearCoefficient
+    },
     generalizations=set(),
     metadata=None
 )
-
 
 ######################
 # PROJECT DEFINITION #

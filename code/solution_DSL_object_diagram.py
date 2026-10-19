@@ -12,7 +12,7 @@ from besser.BUML.metamodel.structural import (
     AnyType, Constraint, AssociationClass, Metadata, MethodImplementationType
 )
 from besser.BUML.metamodel.object import ObjectModel
-import datetime
+from besser.BUML.metamodel.project import Project
 
 # Classes
 QuboModel = Class(name="QuboModel")
@@ -20,169 +20,276 @@ BinaryVariable = Class(name="BinaryVariable")
 LinearTerm = Class(name="LinearTerm")
 QuadraticTerm = Class(name="QuadraticTerm")
 
-# QuboModel class attributes and methods
+# Attributes
 QuboModel_constant: Property = Property(name="constant", type=IntegerType)
-QuboModel.attributes={QuboModel_constant}
+QuboModel.attributes = {QuboModel_constant}
 
-# BinaryVariable class attributes and methods
 BinaryVariable_name: Property = Property(name="name", type=StringType)
-BinaryVariable.attributes={BinaryVariable_name}
+BinaryVariable.attributes = {BinaryVariable_name}
 
-# LinearTerm class attributes and methods
 LinearTerm_coefficient: Property = Property(name="coefficient", type=IntegerType)
-LinearTerm.attributes={LinearTerm_coefficient}
+LinearTerm.attributes = {LinearTerm_coefficient}
 
-# QuadraticTerm class attributes and methods
 QuadraticTerm_coefficient: Property = Property(name="coefficient", type=IntegerType)
-QuadraticTerm.attributes={QuadraticTerm_coefficient}
+QuadraticTerm.attributes = {QuadraticTerm_coefficient}
 
 # Relationships
 QuboModel_BinaryVariable: BinaryAssociation = BinaryAssociation(
     name="QuboModel_BinaryVariable",
     ends={
-        Property(name="qubomodel", type=QuboModel, multiplicity=Multiplicity(1, 1)),
+        Property(name="qubomodel_bv", type=QuboModel, multiplicity=Multiplicity(1, 1)),
         Property(name="binaryVariables", type=BinaryVariable, multiplicity=Multiplicity(0, 9999), is_composite=True)
     }
 )
-LinearTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
-    name="LinearTerm_BinaryVariable",
-    ends={
-        Property(name="linearterm", type=LinearTerm, multiplicity=Multiplicity(0, 9999)),
-        Property(name="binaryVariable", type=BinaryVariable, multiplicity=Multiplicity(1, 1))
-    }
-)
-QuadraticTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
-    name="QuadraticTerm_BinaryVariable",
-    ends={
-        Property(name="quadraticterm", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999)),
-        Property(name="binaryVariables", type=BinaryVariable, multiplicity=Multiplicity(2, 2))
-    }
-)
-QuboModel_QuadraticTerm: BinaryAssociation = BinaryAssociation(
-    name="QuboModel_QuadraticTerm",
-    ends={
-        Property(name="qubomodel", type=QuboModel, multiplicity=Multiplicity(1, 1)),
-        Property(name="quadraticTerms", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999), is_composite=True)
-    }
-)
+
 QuboModel_LinearTerm: BinaryAssociation = BinaryAssociation(
     name="QuboModel_LinearTerm",
     ends={
-        Property(name="qubomodel", type=QuboModel, multiplicity=Multiplicity(1, 1)),
+        Property(name="qubomodel_lt", type=QuboModel, multiplicity=Multiplicity(1, 1)),
         Property(name="linearTerms", type=LinearTerm, multiplicity=Multiplicity(0, 9999), is_composite=True)
     }
 )
 
+QuboModel_QuadraticTerm: BinaryAssociation = BinaryAssociation(
+    name="QuboModel_QuadraticTerm",
+    ends={
+        Property(name="qubomodel_qt", type=QuboModel, multiplicity=Multiplicity(1, 1)),
+        Property(name="quadraticTerms", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999), is_composite=True)
+    }
+)
 
-# OCL Constraints
+LinearTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
+    name="LinearTerm_BinaryVariable",
+    ends={
+        Property(name="linearterm_owner", type=LinearTerm, multiplicity=Multiplicity(0, 9999)),
+        Property(name="linearVariable", type=BinaryVariable, multiplicity=Multiplicity(1, 1))
+    }
+)
+
+QuadraticTerm_BinaryVariable: BinaryAssociation = BinaryAssociation(
+    name="QuadraticTerm_BinaryVariable",
+    ends={
+        Property(name="quadraticterm_owner", type=QuadraticTerm, multiplicity=Multiplicity(0, 9999)),
+        Property(name="variables", type=BinaryVariable, multiplicity=Multiplicity(2, 2))
+    }
+)
+
+# OCL Constraints 
 UniqueVariableNames: Constraint = Constraint(
     name="UniqueVariableNames",
     context=QuboModel,
-    expression="context QuboModel inv UniqueVariableNames:     self.binaryVariables->isUnique(name)",
+    expression="context QuboModel inv UniqueVariableNames: self.binaryVariables->isUnique(name)",
     language="OCL"
 )
 UniqueLinearTermPerVariable: Constraint = Constraint(
     name="UniqueLinearTermPerVariable",
     context=QuboModel,
-    expression="context QuboModel inv UniqueLinearTermPerVariable:     self.linearTerms->isUnique(binaryVariable)",
+    expression="context QuboModel inv UniqueLinearTermPerVariable: self.linearTerms->isUnique(linearVariable)",
     language="OCL"
 )
 UniqueQuadraticTermPerPair: Constraint = Constraint(
     name="UniqueQuadraticTermPerPair",
     context=QuboModel,
-    expression="context QuboModel inv UniqueQuadraticTermPerPair:     self.quadraticTerms->forAll(t1 : QuadraticTerm, t2 : QuadraticTerm |          t1 <> t2 implies not (             t1.binaryVariables->includes(t2.binaryVariables->first()) and              t1.binaryVariables->includes(t2.binaryVariables->last())         )     )",
+    expression="context QuboModel inv UniqueQuadraticTermPerPair: self.quadraticTerms->forAll(t1, t2 | t1 <> t2 implies not (t1.variables->forAll(v | t2.variables->includes(v))))",
     language="OCL"
 )
 MaxFactorizedLinearTerms: Constraint = Constraint(
     name="MaxFactorizedLinearTerms",
     context=QuboModel,
-    expression="context QuboModel inv MaxFactorizedLinearTerms:     self.linearTerms->forAll(t1, t2 |          t1 <> t2 implies t1.binaryVariable <> t2.binaryVariable     )",
+    expression="context QuboModel inv MaxFactorizedLinearTerms: self.linearTerms->forAll(t1, t2 | t1 <> t2 implies t1.linearVariable <> t2.linearVariable)",
     language="OCL"
 )
 MaxFactorizedQuadraticTerms: Constraint = Constraint(
     name="MaxFactorizedQuadraticTerms",
     context=QuboModel,
-    expression="context QuboModel inv MaxFactorizedQuadraticTerms:     self.quadraticTerms->forAll(t1 : QuadraticTerm, t2 : QuadraticTerm |          t1 <> t2 implies not (             t1.binaryVariables->includes(t2.binaryVariables->first()) and              t1.binaryVariables->includes(t2.binaryVariables->last())         )     )",
+    expression="context QuboModel inv MaxFactorizedQuadraticTerms: self.quadraticTerms->forAll(t1, t2 | t1 <> t2 implies not (t1.variables->forAll(v | t2.variables->includes(v))))",
     language="OCL"
 )
 DistinctVariables: Constraint = Constraint(
     name="DistinctVariables",
     context=QuadraticTerm,
-    expression="context QuadraticTerm inv DistinctVariables:     self.binaryVariables->first() <> self.binaryVariables->last()",
+    expression="context QuadraticTerm inv DistinctVariables: self.variables->size() = 2",
     language="OCL"
 )
 NonZeroQuadraticCoefficient: Constraint = Constraint(
     name="NonZeroQuadraticCoefficient",
     context=QuadraticTerm,
-    expression="context QuadraticTerm inv NonZeroQuadraticCoefficient:     self.coefficient <> 0",
+    expression="context QuadraticTerm inv NonZeroQuadraticCoefficient: self.coefficient <> 0",
     language="OCL"
 )
 NonZeroLinearCoefficient: Constraint = Constraint(
     name="NonZeroLinearCoefficient",
     context=LinearTerm,
-    expression="context LinearTerm inv NonZeroLinearCoefficient:     self.coefficient <> 0",
+    expression="context LinearTerm inv NonZeroLinearCoefficient: self.coefficient <> 0",
     language="OCL"
 )
 
 # Domain Model
 domain_model = DomainModel(
-    name="Reference_Classes",
+    name="Class_Diagram",
     types={QuboModel, BinaryVariable, LinearTerm, QuadraticTerm},
-    associations={QuboModel_BinaryVariable, LinearTerm_BinaryVariable, QuadraticTerm_BinaryVariable, QuboModel_QuadraticTerm, QuboModel_LinearTerm},
-    constraints={UniqueVariableNames, UniqueLinearTermPerVariable, UniqueQuadraticTermPerPair, MaxFactorizedLinearTerms, MaxFactorizedQuadraticTerms, DistinctVariables, NonZeroQuadraticCoefficient, NonZeroLinearCoefficient},
+    associations={
+        QuboModel_BinaryVariable,
+        QuboModel_LinearTerm,
+        QuboModel_QuadraticTerm,
+        LinearTerm_BinaryVariable,
+        QuadraticTerm_BinaryVariable
+    },
+    constraints={
+        UniqueVariableNames,
+        UniqueLinearTermPerVariable,
+        UniqueQuadraticTermPerPair,
+        MaxFactorizedLinearTerms,
+        MaxFactorizedQuadraticTerms,
+        DistinctVariables,
+        NonZeroQuadraticCoefficient,
+        NonZeroLinearCoefficient
+    },
     generalizations=set(),
     metadata=None
 )
 
+
 ################
 # OBJECT MODEL #
 ################
-binaryvariable_1_obj = BinaryVariable("binaryVariable_1").attributes(name="x0").build()
-binaryvariable_2_obj = BinaryVariable("binaryVariable_2").attributes(name="x1").build()
-binaryvariable_3_obj = BinaryVariable("binaryVariable_3").attributes(name="x2").build()
-binaryvariable_4_obj = BinaryVariable("binaryVariable_4").attributes(name="x3").build()
-binaryvariable_5_obj = BinaryVariable("binaryVariable_5").attributes(name="s1").build()
-binaryvariable_6_obj = BinaryVariable("binaryVariable_6").attributes(name="s2").build()
-binaryvariable_7_obj = BinaryVariable("binaryVariable_7").attributes(name="s3").build()
-linearterm_1_obj = LinearTerm("linearTerm_1").attributes(coefficient=-523).build()
-linearterm_2_obj = LinearTerm("linearTerm_2").attributes(coefficient=-784).build()
-linearterm_3_obj = LinearTerm("linearTerm_3").attributes(coefficient=-1045).build()
-linearterm_4_obj = LinearTerm("linearTerm_4").attributes(coefficient=-1307).build()
-linearterm_5_obj = LinearTerm("linearTerm_5").attributes(coefficient=-260).build()
-linearterm_6_obj = LinearTerm("linearTerm_6").attributes(coefficient=-520).build()
-linearterm_7_obj = LinearTerm("linearTerm_7").attributes(coefficient=-1040).build()
-quadraticterm_1_obj = QuadraticTerm("quadraticTerm_1").attributes(coefficient=240).build()
-quadraticterm_2_obj = QuadraticTerm("quadraticTerm_2").attributes(coefficient=320).build()
-quadraticterm_3_obj = QuadraticTerm("quadraticTerm_3").attributes(coefficient=480).build()
-quadraticterm_4_obj = QuadraticTerm("quadraticTerm_4").attributes(coefficient=320).build()
-qubomodel_1_obj = QuboModel("quboModel_1").attributes(constant=980).build()
 
-linearterm_6_obj.binaryVariable = binaryvariable_6_obj
-qubomodel_1_obj.binaryVariables = {binaryvariable_1_obj, binaryvariable_2_obj, binaryvariable_3_obj, binaryvariable_4_obj, binaryvariable_5_obj, binaryvariable_6_obj, binaryvariable_7_obj}
-binaryvariable_3_obj.quadraticterm = {quadraticterm_2_obj, quadraticterm_3_obj, quadraticterm_4_obj}
-linearterm_2_obj.binaryVariable = binaryvariable_2_obj
-binaryvariable_2_obj.quadraticterm = {quadraticterm_1_obj, quadraticterm_3_obj}
-linearterm_6_obj.qubomodel = qubomodel_1_obj
-linearterm_5_obj.binaryVariable = binaryvariable_5_obj
-binaryvariable_1_obj.quadraticterm = {quadraticterm_1_obj, quadraticterm_2_obj}
-quadraticterm_1_obj.qubomodel = qubomodel_1_obj
-linearterm_2_obj.qubomodel = qubomodel_1_obj
-quadraticterm_3_obj.qubomodel = qubomodel_1_obj
-quadraticterm_4_obj.qubomodel = qubomodel_1_obj
-linearterm_3_obj.binaryVariable = binaryvariable_3_obj
-linearterm_7_obj.qubomodel = qubomodel_1_obj
-linearterm_5_obj.qubomodel = qubomodel_1_obj
-linearterm_4_obj.binaryVariable = binaryvariable_4_obj
-linearterm_3_obj.qubomodel = qubomodel_1_obj
-quadraticterm_2_obj.qubomodel = qubomodel_1_obj
-linearterm_7_obj.binaryVariable = binaryvariable_7_obj
-linearterm_1_obj.binaryVariable = binaryvariable_1_obj
-linearterm_4_obj.qubomodel = qubomodel_1_obj
-binaryvariable_5_obj.quadraticterm = quadraticterm_4_obj
-linearterm_1_obj.qubomodel = qubomodel_1_obj
+# Objects
 
-# Object Model instance
+binaryvariable_A_obj = BinaryVariable("binaryVariable_A").attributes(name="x_A").build()
+binaryvariable_B_obj = BinaryVariable("binaryVariable_B").attributes(name="x_B").build()
+binaryvariable_C_obj = BinaryVariable("binaryVariable_C").attributes(name="x_C").build()
+binaryvariable_D_obj = BinaryVariable("binaryVariable_D").attributes(name="x_D").build()
+binaryvariable_E_obj = BinaryVariable("binaryVariable_E").attributes(name="x_E").build()
+
+binaryvariable_S1_obj = BinaryVariable("binaryVariable_S1").attributes(name="s_1").build()
+binaryvariable_S2_obj = BinaryVariable("binaryVariable_S2").attributes(name="s_2").build()
+binaryvariable_S3_obj = BinaryVariable("binaryVariable_S3").attributes(name="s_3").build()
+binaryvariable_S4_obj = BinaryVariable("binaryVariable_S4").attributes(name="s_4").build()
+binaryvariable_S5_obj = BinaryVariable("binaryVariable_S5").attributes(name="s_5").build()
+
+linearterm_A_obj = LinearTerm("linearTerm_A").attributes(coefficient=-504).build()
+linearterm_B_obj = LinearTerm("linearTerm_B").attributes(coefficient=-328).build()
+linearterm_C_obj = LinearTerm("linearTerm_C").attributes(coefficient=-474).build()
+linearterm_D_obj = LinearTerm("linearTerm_D").attributes(coefficient=-367).build()
+linearterm_E_obj = LinearTerm("linearTerm_E").attributes(coefficient=-403).build()
+
+linearterm_S1_obj = LinearTerm("linearTerm_S1").attributes(coefficient=-51).build()
+linearterm_S2_obj = LinearTerm("linearTerm_S2").attributes(coefficient=-100).build()
+linearterm_S3_obj = LinearTerm("linearTerm_S3").attributes(coefficient=-192).build()
+linearterm_S4_obj = LinearTerm("linearTerm_S4").attributes(coefficient=-352).build()
+linearterm_S5_obj = LinearTerm("linearTerm_S5").attributes(coefficient=-451).build()
+
+quadraticterm_AB_obj = QuadraticTerm("quadraticTerm_A_B").attributes(coefficient=168).build()
+quadraticterm_AC_obj = QuadraticTerm("quadraticTerm_A_C").attributes(coefficient=264).build()
+quadraticterm_AD_obj = QuadraticTerm("quadraticTerm_A_D").attributes(coefficient=192).build()
+quadraticterm_AE_obj = QuadraticTerm("quadraticTerm_A_E").attributes(coefficient=216).build()
+quadraticterm_BC_obj = QuadraticTerm("quadraticTerm_B_C").attributes(coefficient=154).build()
+quadraticterm_BD_obj = QuadraticTerm("quadraticTerm_B_D").attributes(coefficient=112).build()
+quadraticterm_BE_obj = QuadraticTerm("quadraticTerm_B_E").attributes(coefficient=126).build()
+quadraticterm_CD_obj = QuadraticTerm("quadraticTerm_C_D").attributes(coefficient=176).build()
+quadraticterm_CE_obj = QuadraticTerm("quadraticTerm_C_E").attributes(coefficient=198).build()
+quadraticterm_DE_obj = QuadraticTerm("quadraticTerm_D_E").attributes(coefficient=144).build()
+
+quadraticterm_A_S1_obj = QuadraticTerm("quadraticTerm_A_S1").attributes(coefficient=24).build()
+quadraticterm_B_S1_obj = QuadraticTerm("quadraticTerm_B_S1").attributes(coefficient=14).build()
+quadraticterm_C_S1_obj = QuadraticTerm("quadraticTerm_C_S1").attributes(coefficient=22).build()
+quadraticterm_D_S1_obj = QuadraticTerm("quadraticTerm_D_S1").attributes(coefficient=16).build()
+quadraticterm_E_S1_obj = QuadraticTerm("quadraticTerm_E_S1").attributes(coefficient=18).build()
+
+qubomodel_1_obj = QuboModel("quboModel_1").attributes(constant=676).build()
+
+# Links
+# LinearTerm -> BinaryVariable
+linearterm_A_obj.linearVariable = binaryvariable_A_obj
+linearterm_B_obj.linearVariable = binaryvariable_B_obj
+linearterm_C_obj.linearVariable = binaryvariable_C_obj
+linearterm_D_obj.linearVariable = binaryvariable_D_obj
+linearterm_E_obj.linearVariable = binaryvariable_E_obj
+linearterm_S1_obj.linearVariable = binaryvariable_S1_obj
+linearterm_S2_obj.linearVariable = binaryvariable_S2_obj
+linearterm_S3_obj.linearVariable = binaryvariable_S3_obj
+linearterm_S4_obj.linearVariable = binaryvariable_S4_obj
+linearterm_S5_obj.linearVariable = binaryvariable_S5_obj
+
+# LinearTerm -> QuboModel
+linearterm_A_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_B_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_C_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_D_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_E_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_S1_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_S2_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_S3_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_S4_obj.qubomodel_lt = qubomodel_1_obj
+linearterm_S5_obj.qubomodel_lt = qubomodel_1_obj
+
+# QuadraticTerm -> QuboModel
+quadraticterm_AB_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_AC_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_AD_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_AE_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_BC_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_BD_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_BE_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_CD_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_CE_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_DE_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_A_S1_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_B_S1_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_C_S1_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_D_S1_obj.qubomodel_qt = qubomodel_1_obj
+quadraticterm_E_S1_obj.qubomodel_qt = qubomodel_1_obj
+
+# QuadraticTerm -> variables
+quadraticterm_AB_obj.variables = {binaryvariable_A_obj, binaryvariable_B_obj}
+quadraticterm_AC_obj.variables = {binaryvariable_A_obj, binaryvariable_C_obj}
+quadraticterm_AD_obj.variables = {binaryvariable_A_obj, binaryvariable_D_obj}
+quadraticterm_AE_obj.variables = {binaryvariable_A_obj, binaryvariable_E_obj}
+quadraticterm_BC_obj.variables = {binaryvariable_B_obj, binaryvariable_C_obj}
+quadraticterm_BD_obj.variables = {binaryvariable_B_obj, binaryvariable_D_obj}
+quadraticterm_BE_obj.variables = {binaryvariable_B_obj, binaryvariable_E_obj}
+quadraticterm_CD_obj.variables = {binaryvariable_C_obj, binaryvariable_D_obj}
+quadraticterm_CE_obj.variables = {binaryvariable_C_obj, binaryvariable_E_obj}
+quadraticterm_DE_obj.variables = {binaryvariable_D_obj, binaryvariable_E_obj}
+
+quadraticterm_A_S1_obj.variables = {binaryvariable_A_obj, binaryvariable_S1_obj}
+quadraticterm_B_S1_obj.variables = {binaryvariable_B_obj, binaryvariable_S1_obj}
+quadraticterm_C_S1_obj.variables = {binaryvariable_C_obj, binaryvariable_S1_obj}
+quadraticterm_D_S1_obj.variables = {binaryvariable_D_obj, binaryvariable_S1_obj}
+quadraticterm_E_S1_obj.variables = {binaryvariable_E_obj, binaryvariable_S1_obj}
+
+# QuboModel -> BinaryVariables
+qubomodel_1_obj.binaryVariables = {
+    binaryvariable_A_obj, binaryvariable_B_obj, binaryvariable_C_obj, binaryvariable_D_obj, binaryvariable_E_obj,
+    binaryvariable_S1_obj, binaryvariable_S2_obj, binaryvariable_S3_obj, binaryvariable_S4_obj, binaryvariable_S5_obj
+}
+
+
 object_model: ObjectModel = ObjectModel(
-    name="Solution_Object_Diagram",
-    objects={binaryvariable_1_obj, binaryvariable_2_obj, binaryvariable_3_obj, binaryvariable_4_obj, binaryvariable_5_obj, binaryvariable_6_obj, binaryvariable_7_obj, linearterm_1_obj, linearterm_2_obj, linearterm_3_obj, linearterm_4_obj, linearterm_5_obj, linearterm_6_obj, linearterm_7_obj, quadraticterm_1_obj, quadraticterm_2_obj, quadraticterm_3_obj, quadraticterm_4_obj, qubomodel_1_obj}
+    name="Knapsack_Object_Diagram",
+    objects={
+        binaryvariable_A_obj, binaryvariable_B_obj, binaryvariable_C_obj, binaryvariable_D_obj, binaryvariable_E_obj,
+        binaryvariable_S1_obj, binaryvariable_S2_obj, binaryvariable_S3_obj, binaryvariable_S4_obj, binaryvariable_S5_obj,
+        linearterm_A_obj, linearterm_B_obj, linearterm_C_obj, linearterm_D_obj, linearterm_E_obj,
+        linearterm_S1_obj, linearterm_S2_obj, linearterm_S3_obj, linearterm_S4_obj, linearterm_S5_obj,
+        quadraticterm_AB_obj, quadraticterm_AC_obj, quadraticterm_AD_obj, quadraticterm_AE_obj,
+        quadraticterm_BC_obj, quadraticterm_BD_obj, quadraticterm_BE_obj,
+        quadraticterm_CD_obj, quadraticterm_CE_obj, quadraticterm_DE_obj,
+        quadraticterm_A_S1_obj, quadraticterm_B_S1_obj, quadraticterm_C_S1_obj, quadraticterm_D_S1_obj, quadraticterm_E_S1_obj,
+        qubomodel_1_obj
+    }
+)
+
+
+######################
+# PROJECT DEFINITION #
+######################
+
+metadata = Metadata(description="Workspace project with Domain Model and Object Model.")
+project = Project(
+    name="Solution_DSL",
+    models=[domain_model, object_model],
+    owner="Rémi Linossier",
+    metadata=metadata
 )
