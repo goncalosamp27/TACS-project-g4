@@ -37,7 +37,7 @@ Several domain rules were introduced to ensure the consistency and validity of t
 - R9: The total cost of a SelectionResult must not exceed the SelectionProblem's budget
 
 ### Example Object Model
-Three test cases were selected to demonstrate the application of the DSL, as documented in [Test-Cases.md](./docs/Test-Cases.md) [2]. The first test case was used to create an Object Diagram in BESSER that represents a problem with five candidate projects and a budget of 26 where each project is represented as an instance of the Project class, associated with a single SelectionProblem instance:
+Three test cases were selected to demonstrate the application of the DSL, as documented in [Test-Cases.md](./docs/Test-Cases.md) [2, 3, 4]. The first test case was used to create an Object Diagram in BESSER that represents a problem with five candidate projects and a budget of 26 where each project is represented as an instance of the Project class, associated with a single SelectionProblem instance [2]:
 
 ![Problem DSL Object Diagram](diagrams/problemDSLobject.png)
 *Figure 2: Problem DSL Object Diagram for Test Case 1.*
