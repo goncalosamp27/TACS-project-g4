@@ -1,6 +1,6 @@
 # Test Cases
 
-> The following test cases are based on published 0/1 Knapsack benchmark instances. In the context of the porfolio or project selection problem, each item is interpreted as project and their weight and value as cost and benefit respectively.
+> The following test cases are based on published 0/1 Knapsack benchmark instances. In the context of the portfolio or project selection problem, each item is interpreted as project and their weight and value as cost and benefit respectively.
 
 ## 1: Small Instance
 
