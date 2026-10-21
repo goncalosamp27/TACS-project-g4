@@ -31,3 +31,38 @@ Several domain rules were introduced to ensure the consistency and validity of t
 - R7: The sum of the benefits of the Projects that belong in a SelectionResult must equal its totalBenefit
 - R8: The sum of the costs of the Projects that belong in a SelectionResult must equal its totalCost
 - R9: The total cost of a SelectionResult must not exceed the SelecionProblem's budget
+
+## Solution DSL Design
+A Domain Specific Language was designed to implement the mathematical optimisaition equation. It represents a cost function thanks to binary variables, linear and quadratic coefficients. The DSL was developed using **BESSER** where a UML Class Diagram was created to define its concepts, attributes and relationships. 
+
+| Concept | Intrinsic Properties | Extrinsic Properties |
+|-|-|-|
+| QuboModel | constant: Integer | Contains the BinaryVariables, LinearTerms, QuadraticTerms |
+| BinaryVariable | name: String; | Belongs to one QuboModel |
+| LinearTerm | coefficient: Integer | Belongs to one BinaryVariable |
+| QuadraticTerm | coefficient: Integer | Belongs to two BinaryVariable |
+
+![Solution DSL Class Diagram](diagrams/solutionDSLclass.png)
+*Figure 2: Solution DSL Class Diagram*
+
+- **QuboModel** represents a Quadratic Unconstrained Binary Optimization formulation, defined by the value of the constant. It groups all decision variables, linear and quadratic terms which create the cost equation. 
+- **BinaryVariable** represents a binary decision variables (0/1). Identified by a name and representing either a project selection variable or a slack variable used to uncode constraints (maximum size of the knapsack). 
+- **LinearTerm** represents first order terms in the polynomial equation. Defined by an integer coefficient associated with a single BinaryVariable to model the contribution of this specific project to the result. 
+- **QuadraticTerm** represents second order terms in the polynomial equation. Defined by an integer coefficient associated with two BinaryVariable to model the constraint of maximum weight.
+
+### Domain Rules
+Several domain rules were introduced to ensure the consistency and validity of the solution instances and OCL constraints were used to enforce conditions that cannot be fully expressed through the metamodel's attributes and associations:
+- R1: Each BinaryVariables must habe a unique name 
+- R2: Each LinearTerm must be different than 0
+- R3: Each QuadraticTerm must be different than 0
+- R4: Each QuadraticTerm must be associated with two different BinaryVariable
+- R5: Each BinaryVariable must be associated with a unique LinearTerm
+- R6: Each pair of BinaryVariable must be associated with a unique QuadraticTerm
+- R7: LinearTerm must be factorized as much as possible 
+- R8: QuadraticTerm must be factorized as much as possible
+
+## LLM usage log
+| Goal | Tool | Validation |
+|-|-|-|
+| corrections in OCL syntax | gemini | Quality Check of the class diagram in Besser |
+| creating the solution object code based on the solution class code. Create the object by hand in the GUI of besser would have been difficult because of the high number of links between objects | gemini | manually step throught the code to look at the object instance and links + Quality Check of the object diagram in Besser |
