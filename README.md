@@ -1,6 +1,6 @@
 # TACS Project Group 4
 ## Project Selection Problem (0/1 Knapsack)
-The **0/1 Knapsack problem** consists of **selecting a subset of items** out of a given list inside a **knapsack with a fixed maximum weight**, so that the subset **maximizes the total value without exceeding the capacity** of the bag. Each item has a **fixed weight and value**, can only be **selected once** and **cannot be divided into a fraction** (e.g. selecting half an item is not allowed) [1].
+The **0/1 Knapsack problem** consists of **selecting a subset of items** out of a given list inside a **knapsack with a fixed maximum weight**, so that the subset **maximizes the total value without exceeding the capacity** of the bag. Each item has a **fixed weight and value**, can only be **selected once** and **cannot be divided into a fraction** (e.g. selecting half an item is not allowed) [[1]](#1).
 
 In the context of **Project Selection**, the 0/1 Knapsack problem can be applied to selecting a subset of projects under a limited budget (the knapsack's maximum capacity), where each project has a cost (weight) and a benefit (value). The goal is to maximize the total benefit of the selection without exceeding the available budget.
 
@@ -37,7 +37,7 @@ Several domain rules were introduced to ensure the consistency and validity of t
 - R9: The total cost of a SelectionResult must not exceed the SelectionProblem's budget
 
 ### Example Object Model
-Three test cases were selected to demonstrate the application of the DSL, as documented in [Test-Cases.md](./docs/Test-Cases.md) [2, 3, 4]. The first test case was used to create an Object Diagram in BESSER that represents a problem with five candidate projects and a budget of 26 where each project is represented as an instance of the Project class, associated with a single SelectionProblem instance [2]:
+Three test cases were selected to demonstrate the application of the DSL, as documented in [Test-Cases.md](./docs/Test-Cases.md) [[2](#2), [3](#3), [4](#4)]. The first test case was used to create an Object Diagram in BESSER that represents a problem with five candidate projects and a budget of 26 where each project is represented as an instance of the Project class, associated with a single SelectionProblem instance [[2]](#2):
 
 ![Problem DSL Object Diagram](diagrams/problemDSLobject.png)
 *Figure 2: Problem DSL Object Diagram for Test Case 1.*
@@ -78,7 +78,7 @@ Several domain rules were introduced to ensure the consistency and validity of t
 - R8: QuadraticTerm must be factorized as much as possible
 
 ### Example Object Model
-The first test case was also used to create the corresponding Solution Object Model, representing the Project Selection problem using the QUBO formulation. The model contains five binary decision variables (x_A to x_E), representing the five candidate projects, and five auxiliary binary variables (s_1 to s_5), used to encode the budget constraint. The QuboModel groups these variables together with the linear and quadratic terms representing the mathematical cost function. The original optimization problem maximizes the total benefit of the selected projects while respecting a budget of 26. The intended QUBO transformation converts benefit maximization into minimization and incorporates the budget constraint through a quadratic penalty function [5]:
+The first test case was also used to create the corresponding Solution Object Model, representing the Project Selection problem using the QUBO formulation. The model contains five binary decision variables (x_A to x_E), representing the five candidate projects, and five auxiliary binary variables (s_1 to s_5), used to encode the budget constraint. The QuboModel groups these variables together with the linear and quadratic terms representing the mathematical cost function. The original optimization problem maximizes the total benefit of the selected projects while respecting a budget of 26. The intended QUBO transformation converts benefit maximization into minimization and incorporates the budget constraint through a quadratic penalty function [[5]](#5):
 
 $$
 f(x,s)=-\sum_i b_ix_i+\lambda\left(\sum_i c_ix_i+s-26\right)^2
@@ -92,7 +92,7 @@ where $b_i$ and $c_i$ represent each project's benefit and cost, respectively, $
 > The Object Diagram was implemented in B-UML Python code: [solution_DSL_object_diagram.py](./code/solution_DSL_object_diagram.py)
 
 ## Problem-to-Solution DSL Mapping
-The following table describes how the concepts from the Problem DSL are mapped to the Solution DSL [5].
+The following table describes how the concepts from the Problem DSL are mapped to the Solution DSL [[5]](#5).
 
 | Problem DSL | Solution DSL | Mapping |
 |-|-|-|
@@ -116,8 +116,8 @@ The following table describes how the concepts from the Problem DSL are mapped t
 | improving grammar and writing and verifying spelling | ChatGPT | Manually reviewed suggested corrections to ensure that the content, terminology, and intended meaning remained unchanged |
 
 ## References
-- [1] H. Kellerer, U. Pferschy, and D. Pisinger, Knapsack Problems. Springer, 2004. https://doi.org/10.1007/978-3-540-24777-7
-- [2] J. Burkardt, KNAPSACK_01 — Data for the 01 Knapsack Problem, datasets P02 and P04. https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html
-- [3] K. Lian, Hands-on Optimization with OR-Tools in Python, Chapter 8: The Knapsack Problem, 2023. https://kunlei.github.io/python-ortools-notes/ip-knapsack.html
-- [4] Lolik-Bolik, Knapsack_problem_0-1, GitHub repository. https://github.com/Lolik-Bolik/Knapsack_problem_0-1
-- [5] CodingThrust, [Rule] Knapsack to QUBO, problem-reductions, GitHub Issue #116, 2026. https://github.com/CodingThrust/problem-reductions/issues/116
+<a id="1">[1]</a> H. Kellerer, U. Pferschy, and D. Pisinger, Knapsack Problems. Springer, 2004. https://doi.org/10.1007/978-3-540-24777-7
+<a id="2">[2]</a> J. Burkardt, KNAPSACK_01 — Data for the 01 Knapsack Problem, datasets P02 and P04. https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html
+<a id="3">[3]</a> K. Lian, Hands-on Optimization with OR-Tools in Python, Chapter 8: The Knapsack Problem, 2023. https://kunlei.github.io/python-ortools-notes/ip-knapsack.html
+<a id="4">[4]</a> Lolik-Bolik, Knapsack_problem_0-1, GitHub repository. https://github.com/Lolik-Bolik/Knapsack_problem_0-1
+<a id="5">[5]</a> CodingThrust, [Rule] Knapsack to QUBO, problem-reductions, GitHub Issue #116, 2026. https://github.com/CodingThrust/problem-reductions/issues/116
