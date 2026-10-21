@@ -121,7 +121,11 @@ The following table describes how the concepts from the Problem DSL are mapped t
 
 ## References
 <a id="1">[1]</a> H. Kellerer, U. Pferschy, and D. Pisinger, Knapsack Problems. Springer, 2004. https://doi.org/10.1007/978-3-540-24777-7
+
 <a id="2">[2]</a> J. Burkardt, KNAPSACK_01 — Data for the 01 Knapsack Problem, datasets P02 and P04. https://people.sc.fsu.edu/~jburkardt/datasets/knapsack_01/knapsack_01.html
+
 <a id="3">[3]</a> K. Lian, Hands-on Optimization with OR-Tools in Python, Chapter 8: The Knapsack Problem, 2023. https://kunlei.github.io/python-ortools-notes/ip-knapsack.html
+
 <a id="4">[4]</a> Lolik-Bolik, Knapsack_problem_0-1, GitHub repository. https://github.com/Lolik-Bolik/Knapsack_problem_0-1
+
 <a id="5">[5]</a> CodingThrust, [Rule] Knapsack to QUBO, problem-reductions, GitHub Issue #116, 2026. https://github.com/CodingThrust/problem-reductions/issues/116
