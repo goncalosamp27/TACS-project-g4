@@ -100,24 +100,24 @@ The following table describes how the concepts from the Problem DSL are mapped t
 
 | Problem DSL | Solution DSL | Mapping |
 |-|-|-|
-| SelectionProblem | QuboModel | represents the optimization problem through a mathematical cost function |
-| Project | BinaryVariable | a project corresponds to a binary variable indicating whether it is selected or not (0 or 1) |
-| Project.benefit | LinearTerm | contributes to the objective function, with negative coefficients to represent benefit maximization as minimization |
-| Project.cost | LinearTerm, QuadraticTerm | contributes to the penalty terms used to encode the budget constraint |
-| SelectionProblem.budget | QuboModel | contributes to the coefficients and constant term of the capacity penalty |
-| SelectionResult | *No direct equivalent* | represents a feasible project selection in the original domain, rather than an element of the QUBO formulation |
+| SelectionProblem | QuboModel | Represents the optimization problem through a mathematical cost function |
+| Project | BinaryVariable | A project corresponds to a binary variable indicating whether it is selected or not (0 or 1) |
+| Project.benefit | LinearTerm | Contributes to the objective function, with negative coefficients to represent benefit maximization as minimization |
+| Project.cost | LinearTerm, QuadraticTerm | Contributes to the penalty terms used to encode the budget constraint |
+| SelectionProblem.budget | QuboModel | Contributes to the coefficients and constant term of the capacity penalty |
+| SelectionResult | *No direct equivalent* | Represents a feasible project selection in the original domain, rather than an element of the QUBO formulation |
 
 *Table 3: Mapping between the Problem and Solution DSLs concepts.*
 
 ## LLM usage log
 | Goal | Tool | Validation |
 |-|-|-|
-| finding real and verified test cases | ChatGPT | Compared the test cases against the original benchmark sources and checked the optimal solutions |
-| evaluating the inclusion of *SelectionResult* in Problem DSL | ChatGPT | Reviewed the decision against the domain requirements and the metamodel structure |
-| corrections in OCL syntax | gemini & ChatGPT | Quality Check of the class diagram in Besser |
-| creating the solution object code based on the solution class code. Create the object by hand in the GUI of Besser would have been difficult because of the high number of links between objects | gemini | manually stepped through the code to look at the object instances and links + Quality Check of the object diagram in Besser |
-| creating the mathematical formulation of the solution because we haven't found a test case with | gemini | Quality Check of the object diagram in Besser |
-| improving grammar and writing and verifying spelling | ChatGPT | Manually reviewed suggested corrections to ensure that the content, terminology, and intended meaning remained unchanged |
+| Finding real and verified test cases | ChatGPT | Compared the test cases against the original benchmark sources and checked the optimal solutions |
+| Evaluating the inclusion of *SelectionResult* in Problem DSL | ChatGPT | Reviewed the decision against the domain requirements and the metamodel structure |
+| Corrections in OCL syntax | Gemini & ChatGPT | Quality Check of the class diagram in Besser |
+| Creating the solution object code based on the solution class code. Create the object by hand in the GUI of Besser would have been difficult because of the high number of links between objects | Gemini | Manually stepped through the code to look at the object instances and links + Quality Check of the object diagram in Besser |
+| Creating the mathematical formulation of the solution because we haven't found a test case with | Gemini | Quality Check of the object diagram in Besser |
+| Improving grammar and writing and verifying spelling | ChatGPT | Manually reviewed suggested corrections to ensure that the content, terminology, and intended meaning remained unchanged |
 
 ## References
 <a id="1">[1]</a> H. Kellerer, U. Pferschy, and D. Pisinger, Knapsack Problems. Springer, 2004. https://doi.org/10.1007/978-3-540-24777-7
