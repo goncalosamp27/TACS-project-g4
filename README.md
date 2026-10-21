@@ -1,4 +1,8 @@
 # TACS Project Group 4
+Gonçalo Sampaio
+Rémi Linossier
+Francisco Nunes
+
 ## Project Selection Problem (0/1 Knapsack)
 The **0/1 Knapsack problem** consists of **selecting a subset of items** out of a given list inside a **knapsack with a fixed maximum weight**, so that the subset **maximizes the total value without exceeding the capacity** of the bag. Each item has a **fixed weight and value**, can only be **selected once** and **cannot be divided into a fraction** (e.g. selecting half an item is not allowed) [[1]](#1).
 
@@ -64,7 +68,7 @@ A Domain Specific Language was designed to implement the mathematical optimisati
 - **QuboModel** represents a Quadratic Unconstrained Binary Optimization formulation, defined by the value of the constant. It groups all decision variables, linear and quadratic terms which create the cost equation. 
 - **BinaryVariable** represents a binary decision variable (0/1). Identified by a name and representing either a project selection variable or a slack variable used to encode constraints (maximum size of the knapsack). 
 - **LinearTerm** represents first order terms in the polynomial equation. Defined by an integer coefficient associated with a single BinaryVariable to model the contribution of this specific project to the result. 
-- **QuadraticTerm** represents second order terms in the polynomial equation. Defined by an integer coefficient associated with two BinaryVariable to model the constraint of maximum weight.
+- **QuadraticTerm** represents second order terms in the polynomial equation. Defined by an integer coefficient associated with two BinaryVariable to model the constraint of maximum budget.
 
 ### Domain Rules
 Several domain rules were introduced to ensure the consistency and validity of the solution instances and OCL constraints were used to enforce conditions that cannot be fully expressed through the metamodel's attributes and associations:
@@ -78,7 +82,7 @@ Several domain rules were introduced to ensure the consistency and validity of t
 - R8: QuadraticTerm must be factorized as much as possible
 
 ### Example Object Model
-The first test case was also used to create the corresponding Solution Object Model, representing the Project Selection problem using the QUBO formulation. The model contains five binary decision variables (x_A to x_E), representing the five candidate projects, and five auxiliary binary variables (s_1 to s_5), used to encode the budget constraint. The QuboModel groups these variables together with the linear and quadratic terms representing the mathematical cost function. The original optimization problem maximizes the total benefit of the selected projects while respecting a budget of 26. The intended QUBO transformation converts benefit maximization into minimization and incorporates the budget constraint through a quadratic penalty function [[5]](#5):
+The first test case was also used to create the corresponding Solution Object Model, representing the Project Selection problem using the QUBO formulation. The model contains five binary decision variables (x_A to x_E), representing the five candidate projects, and five slack binary variables (s_1 to s_5), used to encode the budget constraint. The QuboModel groups these variables together with the linear and quadratic terms representing the mathematical cost function. The original optimization problem maximizes the total benefit of the selected projects while respecting a budget of 26. The intended QUBO transformation converts benefit maximization into minimization and incorporates the budget constraint through a quadratic penalty function [[5]](#5):
 
 $$
 f(x,s)=-\sum_i b_ix_i+\lambda\left(\sum_i c_ix_i+s-26\right)^2
@@ -111,7 +115,7 @@ The following table describes how the concepts from the Problem DSL are mapped t
 | finding real and verified test cases | ChatGPT | Compared the test cases against the original benchmark sources and checked the optimal solutions |
 | evaluating the inclusion of *SelectionResult* in Problem DSL | ChatGPT | Reviewed the decision against the domain requirements and the metamodel structure |
 | corrections in OCL syntax | gemini & ChatGPT | Quality Check of the class diagram in Besser |
-| creating the solution object code based on the solution class code. Create the object by hand in the GUI of Besser would have been difficult because of the high number of links between objects | gemini | manually stepped through the code to look at the object instance and links + Quality Check of the object diagram in Besser |
+| creating the solution object code based on the solution class code. Create the object by hand in the GUI of Besser would have been difficult because of the high number of links between objects | gemini | manually stepped through the code to look at the object instances and links + Quality Check of the object diagram in Besser |
 | creating the mathematical formulation of the solution because we haven't found a test case with | gemini | Quality Check of the object diagram in Besser |
 | improving grammar and writing and verifying spelling | ChatGPT | Manually reviewed suggested corrections to ensure that the content, terminology, and intended meaning remained unchanged |
 
