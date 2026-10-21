@@ -78,4 +78,5 @@ Several domain rules were introduced to ensure the consistency and validity of t
 |-|-|-|
 | corrections in OCL syntax | gemini | Quality Check of the class diagram in Besser |
 | creating the solution object code based on the solution class code. Create the object by hand in the GUI of besser would have been difficult because of the high number of links between objects | gemini | manually step throught the code to look at the object instance and links + Quality Check of the object diagram in Besser |
+| creating the mathematical formulation of the solution because we haven't found an test case with | gemini | Quality Check of the object diagram in besser |
 
