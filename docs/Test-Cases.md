@@ -59,6 +59,6 @@ Total benefit: 107
 | I | 85 | 65 |
 | J | 87 | 46 |
 
-Optimal solution: [B, C, D, H, I, J]
-Total cost: 269
-Total benefit: 295
+Optimal solution: [A, B, C, D, E, F, G, I]
+Total cost: 264
+Total benefit: 431
