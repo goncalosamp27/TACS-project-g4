@@ -110,13 +110,13 @@ The following table describes how the concepts from the Problem DSL are mapped t
 *Table 3: Mapping between the Problem and Solution DSLs concepts.*
 
 ## LLM usage log
-| Goal | Tool | Validation |
+| Goal | Tool & model | What was wrong and validation |
 |-|-|-|
 | Finding real and verified test cases | ChatGPT | Compared the test cases against the original benchmark sources and checked the optimal solutions |
 | Evaluating the inclusion of *SelectionResult* in Problem DSL | ChatGPT | Reviewed the decision against the domain requirements and the metamodel structure |
-| Corrections in OCL syntax | Gemini & ChatGPT | Quality Check of the class diagram in Besser |
-| Creating the solution object code based on the solution class code. Create the object by hand in the GUI of Besser would have been difficult because of the high number of links between objects | Gemini | Manually stepped through the code to look at the object instances and links + Quality Check of the object diagram in Besser |
-| Creating the mathematical formulation of the solution because we haven't found a test case with | Gemini | Quality Check of the object diagram in Besser |
+| Corrections in OCL syntax | Gemini Pro & ChatGPT | Some answers from LLM were wrong because of the version of Besser. We used Quality Check of the class diagram in Besser to validate the modifications |
+| Creating the solution object code based on the solution class code. Create the object by hand in the GUI of Besser would have been difficult because of the high number of links between objects | Gemini Pro | At first some links were missing an end because of ambiguous names. Then we manually stepped through the code to look at the object instances and links + Quality Check of the object diagram in Besser |
+| Creating the mathematical formulation of the solution because we haven't found a test case with | Gemini Pro | Quality Check of the object diagram in Besser |
 | Improving grammar and writing and verifying spelling | ChatGPT | Manually reviewed suggested corrections to ensure that the content, terminology, and intended meaning remained unchanged |
 
 ## References
