@@ -56,9 +56,9 @@ qc.append(HGate(), [q[8]])
 
 qc.append(HGate(), [q[9]])
 
-qc.append(RZGate(-32587.740595686922), [q[4]])
-
 qc.append(RZGate(-27975.88258021711), [q[9]])
+
+qc.append(RZGate(-32587.740595686922), [q[4]])
 
 qc.append(RZGate(-32605.804753445067), [q[7]])
 
@@ -72,9 +72,21 @@ qc.append(RZGate(-25446.115095913927), [q[8]])
 
 qc.append(RZGate(-25434.334123462966), [q[3]])
 
+qc.append(RZGate(-7225.663103256524), [q[1]])
+
 qc.append(RZGate(-22771.048951382218), [q[6]])
 
-qc.append(RZGate(-7225.663103256524), [q[1]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[6]])
+
+qc.append(RZGate(8092.742675647307), [q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[9]])
+
+qc.append(RZGate(14306.812944447918), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[4]])
 
@@ -87,6 +99,12 @@ qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[5]])
 qc.append(RZGate(19075.750592597225), [q[5]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[2]])
+
+qc.append(RZGate(6358.5835308657415), [q[2]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[2]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[0]])
 
@@ -112,11 +130,11 @@ qc.append(RZGate(1589.6458827164354), [q[0]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[0]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[5]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[9]])
 
-qc.append(RZGate(15607.432303034093), [q[5]])
+qc.append(RZGate(15607.432303034093), [q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[5]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[2]])
 
@@ -130,17 +148,17 @@ qc.append(RZGate(4624.424386084175), [q[2]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[2]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
-
-qc.append(RZGate(11127.521179015048), [q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
-
 qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[1]])
 
 qc.append(RZGate(2312.2121930420876), [q[1]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[1]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
+
+qc.append(RZGate(11127.521179015048), [q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[1]])
 
@@ -154,11 +172,11 @@ qc.append(RZGate(12717.167061731483), [q[4]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[4]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[7]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[9]])
 
-qc.append(RZGate(14306.812944447918), [q[7]])
+qc.append(RZGate(14306.812944447918), [q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[7]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[2]])
 
@@ -172,11 +190,11 @@ qc.append(RZGate(13873.273158252527), [q[3]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[3]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[1]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[9]])
 
-qc.append(RZGate(2601.2387171723485), [q[1]])
+qc.append(RZGate(2601.2387171723485), [q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[1]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[1]])
 
@@ -196,11 +214,11 @@ qc.append(RZGate(11127.521179015048), [q[6]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[6]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[3]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[9]])
 
-qc.append(RZGate(10404.954868689394), [q[3]])
+qc.append(RZGate(10404.954868689394), [q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[3]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[3]])
 
@@ -208,11 +226,23 @@ qc.append(RZGate(12717.167061731483), [q[3]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[3]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[5]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[6]])
 
-qc.append(RZGate(12139.11401347096), [q[5]])
+qc.append(RZGate(12139.11401347096), [q[6]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[5]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[9]])
+
+qc.append(RZGate(9104.335510103221), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[9]])
+
+qc.append(RZGate(5202.477434344697), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[0]])
 
@@ -220,17 +250,11 @@ qc.append(RZGate(289.02652413026095), [q[0]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[0]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[6]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[9]])
 
-qc.append(RZGate(9104.335510103221), [q[6]])
+qc.append(RZGate(10404.954868689394), [q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[8]])
-
-qc.append(RZGate(10404.954868689394), [q[8]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[8]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[5]])
 
@@ -280,17 +304,17 @@ qc.append(RZGate(9248.84877216835), [q[3]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[3]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[7]])
-
-qc.append(RZGate(12717.167061731483), [q[7]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[7]])
-
 qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[1]])
 
 qc.append(RZGate(3179.2917654328708), [q[1]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[1]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[7]])
+
+qc.append(RZGate(12717.167061731483), [q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[7]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[2]])
 
@@ -298,17 +322,11 @@ qc.append(RZGate(6936.636579126263), [q[2]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[2]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[9]])
 
-qc.append(RZGate(1300.6193585861743), [q[0]])
+qc.append(RZGate(1300.6193585861743), [q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[0]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[4]])
-
-qc.append(RZGate(14306.812944447918), [q[4]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[4]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[0]])
 
@@ -327,24 +345,6 @@ qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[5]])
 qc.append(RZGate(19075.750592597225), [q[5]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[5]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[2]])
-
-qc.append(RZGate(5202.477434344697), [q[2]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[2]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[2]])
-
-qc.append(RZGate(6358.5835308657415), [q[2]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[2]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[6]])
-
-qc.append(RZGate(8092.742675647307), [q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[6]])
 
 qc.append(RXGate(1.5707963267948966), [q[0]])
 
@@ -407,7 +407,18 @@ print("\n--- Domain Validation and Probability Analysis ---")
 qubo_vars = ['s_1', 's_2', 's_3', 's_4', 's_5', 'x_A', 'x_B', 'x_C', 'x_D', 'x_E']
 total_shots = sum(counts.values())
 
-# Aggregate counts by decoded domain solution (ignoring slack variables)
+# --- DYNAMIC PROBLEM DATA ---
+# Injected directly from the MDE Problem Model (problem_DSL_object_diagram.py)
+projects_data = {
+    'A': {'cost': 12, 'benefit': 24},
+    'B': {'cost': 7, 'benefit': 13},
+    'C': {'cost': 11, 'benefit': 23},
+    'D': {'cost': 8, 'benefit': 15},
+    'E': {'cost': 9, 'benefit': 16},
+}
+max_budget = 26
+
+# Aggregate counts by decoded domain solution
 aggregated_results = {}
 
 for bitstring, count in counts.items():
@@ -423,18 +434,58 @@ for bitstring, count in counts.items():
             elif not var_name.startswith('s_'):
                 selected_items.append(var_name)
                 
-    solution_str = ', '.join(selected_items) if selected_items else 'None'
+    # Sort items to correctly group identical combinations (e.g. 'C, B' and 'B, C')
+    selected_items.sort()
+    solution_tuple = tuple(selected_items)
     
-    # Sum the counts for identical domain solutions
-    if solution_str in aggregated_results:
-        aggregated_results[solution_str] += count
+    if solution_tuple in aggregated_results:
+        aggregated_results[solution_tuple] += count
     else:
-        aggregated_results[solution_str] = count
+        aggregated_results[solution_tuple] = count
 
-# Sort results by descending probability
-sorted_solutions = sorted(aggregated_results.items(), key=lambda item: item[1], reverse=True)
-
-print(f"Top 5 Domain Solutions measured over {total_shots} shots:")
-for solution_str, count in sorted_solutions[:5]:
+# Evaluate all unique solutions found by the quantum circuit
+evaluated_solutions = []
+for solution, count in aggregated_results.items():
+    total_cost = sum(projects_data.get(item, {'cost': 0})['cost'] for item in solution)
+    total_benefit = sum(projects_data.get(item, {'benefit': 0})['benefit'] for item in solution)
+    
+    is_valid = total_cost <= max_budget
     prob = (count / total_shots) * 100
-    print(f"  -> Solution [{solution_str}] : {prob:.2f}% probability (measured {count} times)")
+    
+    evaluated_solutions.append({
+        'items': solution,
+        'cost': total_cost,
+        'benefit': total_benefit,
+        'is_valid': is_valid,
+        'count': count,
+        'prob': prob
+    })
+
+# ---------------------------------------------------------
+# HIGHLIGHT THE TRUE OPTIMAL SOLUTION (CLASSICAL BASELINE)
+# ---------------------------------------------------------
+# Filter valid solutions and find the one with the absolute maximum benefit
+valid_solutions = [s for s in evaluated_solutions if s['is_valid']]
+
+if valid_solutions:
+    best_valid = max(valid_solutions, key=lambda x: x['benefit'])
+    sol_str = ', '.join(best_valid['items']) if best_valid['items'] else 'None'
+    
+    print(f"\n🏆 TRUE OPTIMAL SOLUTION MEASURED:")
+    print(f"  -> Items selected: [{sol_str}]")
+    print(f"  -> Cost: {best_valid['cost']} (Max: {max_budget}) | Benefit: {best_valid['benefit']}")
+    print(f"  -> Quantum Probability: {best_valid['prob']:.2f}% (measured {best_valid['count']} times)")
+else:
+    print("\n❌ No valid solutions were measured by the quantum circuit.")
+
+# ---------------------------------------------------------
+# SHOW MOST FREQUENT QUANTUM STATES
+# ---------------------------------------------------------
+# Sort by highest quantum probability (count) to see what the circuit favored
+evaluated_solutions.sort(key=lambda x: x['count'], reverse=True)
+
+print(f"\n--- Top 5 Most Frequent Quantum States ---")
+for s in evaluated_solutions[:5]:
+    status = "✅ Valid" if s['is_valid'] else "❌ INVALID (Overweight)"
+    sol_str = ', '.join(s['items']) if s['items'] else 'None'
+    print(f"  -> [{sol_str}] : {s['prob']:.2f}% | {status} | Cost: {s['cost']}, Benefit: {s['benefit']}")

@@ -25,7 +25,7 @@ import runpy
 
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_INPUT = ROOT / "code/object/problem_DSL_object_diagram.py"
+DEFAULT_INPUT = ROOT / "code/object/small_problem_DSL_object_diagram.py"
 DEFAULT_METAMODEL = ROOT / "code/solution_DSL_class_diagram.py"
 DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parent / "generated"
 
