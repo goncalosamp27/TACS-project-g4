@@ -25,10 +25,10 @@ import numpy as np
 
 # Initialize Registers
 
-q = QuantumRegister(10, 'q')
+q = QuantumRegister(19, 'q')
 
 
-c = ClassicalRegister(10, 'c')
+c = ClassicalRegister(19, 'c')
 
 
 # Initialize Circuit
@@ -56,295 +56,1087 @@ qc.append(HGate(), [q[8]])
 
 qc.append(HGate(), [q[9]])
 
-qc.append(RZGate(-27975.88258021711), [q[9]])
+qc.append(HGate(), [q[10]])
 
-qc.append(RZGate(-32587.740595686922), [q[4]])
+qc.append(HGate(), [q[11]])
 
-qc.append(RZGate(-32605.804753445067), [q[7]])
+qc.append(HGate(), [q[12]])
 
-qc.append(RZGate(-13873.273158252527), [q[2]])
+qc.append(HGate(), [q[13]])
 
-qc.append(RZGate(-3685.0881826608274), [q[0]])
+qc.append(HGate(), [q[14]])
 
-qc.append(RZGate(-34702.032451552855), [q[5]])
+qc.append(HGate(), [q[15]])
 
-qc.append(RZGate(-25446.115095913927), [q[8]])
+qc.append(HGate(), [q[16]])
 
-qc.append(RZGate(-25434.334123462966), [q[3]])
+qc.append(HGate(), [q[17]])
 
-qc.append(RZGate(-7225.663103256524), [q[1]])
+qc.append(HGate(), [q[18]])
 
-qc.append(RZGate(-22771.048951382218), [q[6]])
+qc.append(RZGate(-0.33746822460783515), [q[0]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[6]])
+qc.append(RZGate(-0.06135891367428855), [q[1]])
 
-qc.append(RZGate(8092.742675647307), [q[6]])
+qc.append(RZGate(-0.2883836205054442), [q[2]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[6]])
+qc.append(RZGate(-0.030677073028616098), [q[3]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[9]])
+qc.append(RZGate(-0.024541865019631987), [q[4]])
 
-qc.append(RZGate(14306.812944447918), [q[9]])
+qc.append(RZGate(-0.3067904364366606), [q[5]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[9]])
+qc.append(RZGate(-0.04908102838959869), [q[6]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[4]])
+qc.append(RZGate(-0.37428638570647155), [q[7]])
 
-qc.append(RZGate(17486.104709880787), [q[4]])
+qc.append(RZGate(-0.5215483029626403), [q[8]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[4]])
+qc.append(RZGate(-0.5338216590111267), [q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[5]])
+qc.append(RZGate(-0.006135923151542565), [q[10]])
 
-qc.append(RZGate(19075.750592597225), [q[5]])
+qc.append(RZGate(-0.01227184630308513), [q[11]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[5]])
+qc.append(RZGate(-0.02454369260617026), [q[12]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[2]])
+qc.append(RZGate(-0.04908738521234052), [q[13]])
 
-qc.append(RZGate(6358.5835308657415), [q[2]])
+qc.append(RZGate(-0.09817477042468103), [q[14]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[2]])
+qc.append(RZGate(-0.19634954084936207), [q[15]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[0]])
+qc.append(RZGate(-0.39269908169872414), [q[16]])
 
-qc.append(RZGate(578.0530482605219), [q[0]])
+qc.append(RZGate(-0.7853981633974483), [q[17]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[0]])
+qc.append(RZGate(-0.0859029241215959), [q[18]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[1]])
 
-qc.append(RZGate(1011.5928344559134), [q[0]])
+qc.append(RZGate(0.023599704429009865), [q[1]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[1]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[2]])
 
-qc.append(RZGate(1156.1060965210438), [q[0]])
+qc.append(RZGate(0.11091861081634635), [q[2]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[2]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[3]])
 
-qc.append(RZGate(1589.6458827164354), [q[0]])
+qc.append(RZGate(0.011799852214504932), [q[3]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[3]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[9]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[4]])
 
-qc.append(RZGate(15607.432303034093), [q[9]])
+qc.append(RZGate(0.009439881771603945), [q[4]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[9]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[4]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[2]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[5]])
 
-qc.append(RZGate(4046.3713378236534), [q[2]])
+qc.append(RZGate(0.11799852214504931), [q[5]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[2]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[5]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[2]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[6]])
 
-qc.append(RZGate(4624.424386084175), [q[2]])
+qc.append(RZGate(0.01887976354320789), [q[6]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[2]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[6]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[1]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[7]])
 
-qc.append(RZGate(2312.2121930420876), [q[1]])
+qc.append(RZGate(0.14395819701696017), [q[7]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[1]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[7]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[8]])
 
-qc.append(RZGate(11127.521179015048), [q[6]])
+qc.append(RZGate(0.20059748764658386), [q[8]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[1]])
-
-qc.append(RZGate(3468.3182895631317), [q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[4]])
-
-qc.append(RZGate(12717.167061731483), [q[4]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[4]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[9]])
-
-qc.append(RZGate(14306.812944447918), [q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[2]])
-
-qc.append(RZGate(4624.424386084175), [q[2]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[2]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[3]])
-
-qc.append(RZGate(13873.273158252527), [q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[9]])
-
-qc.append(RZGate(2601.2387171723485), [q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[1]])
-
-qc.append(RZGate(3179.2917654328708), [q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[3]])
-
-qc.append(RZGate(12717.167061731483), [q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[6]])
-
-qc.append(RZGate(11127.521179015048), [q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[9]])
-
-qc.append(RZGate(10404.954868689394), [q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[3]])
-
-qc.append(RZGate(12717.167061731483), [q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[6]])
-
-qc.append(RZGate(12139.11401347096), [q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[6]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[9]])
-
-qc.append(RZGate(9104.335510103221), [q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[9]])
-
-qc.append(RZGate(5202.477434344697), [q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[0]])
-
-qc.append(RZGate(289.02652413026095), [q[0]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[0]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[9]])
-
-qc.append(RZGate(10404.954868689394), [q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[9]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[5]])
-
-qc.append(RZGate(13873.273158252527), [q[5]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[5]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[0]])
-
-qc.append(RZGate(1156.1060965210438), [q[0]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[0]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[1]])
-
-qc.append(RZGate(2023.1856689118267), [q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[1]])
-
-qc.append(RZGate(2312.2121930420876), [q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[1]])
-
-qc.append(RZGate(1156.1060965210438), [q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[3]])
-
-qc.append(RZGate(8092.742675647307), [q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[0]])
-
-qc.append(RZGate(1734.1591447815658), [q[0]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[0]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[3]])
-
-qc.append(RZGate(9248.84877216835), [q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[3]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[1]])
-
-qc.append(RZGate(3179.2917654328708), [q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[1]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[7]])
-
-qc.append(RZGate(12717.167061731483), [q[7]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[7]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[2]])
-
-qc.append(RZGate(6936.636579126263), [q[2]])
-
-qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[2]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[8]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[9]])
 
-qc.append(RZGate(1300.6193585861743), [q[9]])
+qc.append(RZGate(0.20531742853238583), [q[9]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[9]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[10]])
 
-qc.append(RZGate(1589.6458827164354), [q[0]])
+qc.append(RZGate(0.002359970442900986), [q[10]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[0]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[10]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[2]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[11]])
 
-qc.append(RZGate(6358.5835308657415), [q[2]])
+qc.append(RZGate(0.004719940885801972), [q[11]])
 
-qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[2]])
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[12]])
+
+qc.append(RZGate(0.009439881771603945), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[13]])
+
+qc.append(RZGate(0.01887976354320789), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[14]])
+
+qc.append(RZGate(0.03775952708641578), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[15]])
+
+qc.append(RZGate(0.07551905417283156), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[16]])
+
+qc.append(RZGate(0.1510381083456631), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[17]])
+
+qc.append(RZGate(0.3020762166913262), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[18]])
+
+qc.append(RZGate(0.033039586200613806), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[0], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[2]])
+
+qc.append(RZGate(0.020167020148426612), [q[2]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[2]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[3]])
+
+qc.append(RZGate(0.002145427675364533), [q[3]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[3]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[4]])
+
+qc.append(RZGate(0.0017163421402916267), [q[4]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[4]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[5]])
+
+qc.append(RZGate(0.02145427675364533), [q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[6]])
+
+qc.append(RZGate(0.0034326842805832533), [q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[7]])
+
+qc.append(RZGate(0.026174217639447304), [q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[8]])
+
+qc.append(RZGate(0.03647227048119706), [q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[9]])
+
+qc.append(RZGate(0.03733044155134287), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[10]])
+
+qc.append(RZGate(0.00042908553507290667), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[11]])
+
+qc.append(RZGate(0.0008581710701458133), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[12]])
+
+qc.append(RZGate(0.0017163421402916267), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[13]])
+
+qc.append(RZGate(0.0034326842805832533), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[14]])
+
+qc.append(RZGate(0.006865368561166507), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[15]])
+
+qc.append(RZGate(0.013730737122333013), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[16]])
+
+qc.append(RZGate(0.027461474244666027), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[17]])
+
+qc.append(RZGate(0.05492294848933205), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[18]])
+
+qc.append(RZGate(0.0060071974910206926), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[1], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[3]])
+
+qc.append(RZGate(0.010083510074213306), [q[3]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[3]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[4]])
+
+qc.append(RZGate(0.008066808059370644), [q[4]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[4]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[5]])
+
+qc.append(RZGate(0.10083510074213306), [q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[6]])
+
+qc.append(RZGate(0.016133616118741288), [q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[7]])
+
+qc.append(RZGate(0.12301882290540234), [q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[8]])
+
+qc.append(RZGate(0.17141967126162622), [q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[9]])
+
+qc.append(RZGate(0.17545307529131152), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[10]])
+
+qc.append(RZGate(0.002016702014842661), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[11]])
+
+qc.append(RZGate(0.004033404029685322), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[12]])
+
+qc.append(RZGate(0.008066808059370644), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[13]])
+
+qc.append(RZGate(0.016133616118741288), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[14]])
+
+qc.append(RZGate(0.032267232237482575), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[15]])
+
+qc.append(RZGate(0.06453446447496515), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[16]])
+
+qc.append(RZGate(0.1290689289499303), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[17]])
+
+qc.append(RZGate(0.2581378578998606), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[18]])
+
+qc.append(RZGate(0.028233828207797258), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[2], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[4]])
+
+qc.append(RZGate(0.0008581710701458133), [q[4]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[4]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[5]])
+
+qc.append(RZGate(0.010727138376822666), [q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[6]])
+
+qc.append(RZGate(0.0017163421402916267), [q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[7]])
+
+qc.append(RZGate(0.013087108819723652), [q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[8]])
+
+qc.append(RZGate(0.01823613524059853), [q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[9]])
+
+qc.append(RZGate(0.018665220775671437), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[10]])
+
+qc.append(RZGate(0.00021454276753645333), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[11]])
+
+qc.append(RZGate(0.00042908553507290667), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[12]])
+
+qc.append(RZGate(0.0008581710701458133), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[13]])
+
+qc.append(RZGate(0.0017163421402916267), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[14]])
+
+qc.append(RZGate(0.0034326842805832533), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[15]])
+
+qc.append(RZGate(0.006865368561166507), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[16]])
+
+qc.append(RZGate(0.013730737122333013), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[17]])
+
+qc.append(RZGate(0.027461474244666027), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[18]])
+
+qc.append(RZGate(0.0030035987455103463), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[3], q[18]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[5]])
 
-qc.append(RZGate(19075.750592597225), [q[5]])
+qc.append(RZGate(0.008581710701458132), [q[5]])
 
 qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[5]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
+
+qc.append(RZGate(0.001373073712233301), [q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[7]])
+
+qc.append(RZGate(0.010469687055778922), [q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[8]])
+
+qc.append(RZGate(0.014588908192478824), [q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[9]])
+
+qc.append(RZGate(0.01493217662053715), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[10]])
+
+qc.append(RZGate(0.00017163421402916263), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[11]])
+
+qc.append(RZGate(0.00034326842805832526), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[12]])
+
+qc.append(RZGate(0.0006865368561166505), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[13]])
+
+qc.append(RZGate(0.001373073712233301), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[14]])
+
+qc.append(RZGate(0.002746147424466602), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[15]])
+
+qc.append(RZGate(0.005492294848933204), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[16]])
+
+qc.append(RZGate(0.010984589697866408), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[17]])
+
+qc.append(RZGate(0.021969179395732816), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[18]])
+
+qc.append(RZGate(0.002402878996408277), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[4], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[6]])
+
+qc.append(RZGate(0.017163421402916264), [q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[6]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[7]])
+
+qc.append(RZGate(0.13087108819723653), [q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[8]])
+
+qc.append(RZGate(0.1823613524059853), [q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[9]])
+
+qc.append(RZGate(0.18665220775671437), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[10]])
+
+qc.append(RZGate(0.002145427675364533), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[11]])
+
+qc.append(RZGate(0.004290855350729066), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[12]])
+
+qc.append(RZGate(0.008581710701458132), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[13]])
+
+qc.append(RZGate(0.017163421402916264), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[14]])
+
+qc.append(RZGate(0.03432684280583253), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[15]])
+
+qc.append(RZGate(0.06865368561166506), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[16]])
+
+qc.append(RZGate(0.13730737122333012), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[17]])
+
+qc.append(RZGate(0.27461474244666023), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[18]])
+
+qc.append(RZGate(0.030035987455103462), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[5], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[7]])
+
+qc.append(RZGate(0.020939374111557843), [q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[7]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[8]])
+
+qc.append(RZGate(0.029177816384957648), [q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[9]])
+
+qc.append(RZGate(0.0298643532410743), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[10]])
+
+qc.append(RZGate(0.00034326842805832526), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[11]])
+
+qc.append(RZGate(0.0006865368561166505), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[12]])
+
+qc.append(RZGate(0.001373073712233301), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[13]])
+
+qc.append(RZGate(0.002746147424466602), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[14]])
+
+qc.append(RZGate(0.005492294848933204), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[15]])
+
+qc.append(RZGate(0.010984589697866408), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[16]])
+
+qc.append(RZGate(0.021969179395732816), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[17]])
+
+qc.append(RZGate(0.04393835879146563), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[18]])
+
+qc.append(RZGate(0.004805757992816554), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[6], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[8]])
+
+qc.append(RZGate(0.2224808499353021), [q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[8]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[9]])
+
+qc.append(RZGate(0.22771569346319157), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[10]])
+
+qc.append(RZGate(0.0026174217639447304), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[11]])
+
+qc.append(RZGate(0.005234843527889461), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[12]])
+
+qc.append(RZGate(0.010469687055778922), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[13]])
+
+qc.append(RZGate(0.020939374111557843), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[14]])
+
+qc.append(RZGate(0.041878748223115686), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[15]])
+
+qc.append(RZGate(0.08375749644623137), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[16]])
+
+qc.append(RZGate(0.16751499289246274), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[17]])
+
+qc.append(RZGate(0.3350299857849255), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[18]])
+
+qc.append(RZGate(0.03664390469522623), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[7], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[9]])
+
+qc.append(RZGate(0.31730875318641444), [q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[9]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[10]])
+
+qc.append(RZGate(0.003647227048119706), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[11]])
+
+qc.append(RZGate(0.007294454096239412), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[12]])
+
+qc.append(RZGate(0.014588908192478824), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[13]])
+
+qc.append(RZGate(0.029177816384957648), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[14]])
+
+qc.append(RZGate(0.058355632769915296), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[15]])
+
+qc.append(RZGate(0.11671126553983059), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[16]])
+
+qc.append(RZGate(0.23342253107966118), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[17]])
+
+qc.append(RZGate(0.46684506215932237), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[18]])
+
+qc.append(RZGate(0.051061178673675885), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[8], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[10]])
+
+qc.append(RZGate(0.0037330441551342874), [q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[10]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[11]])
+
+qc.append(RZGate(0.007466088310268575), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[12]])
+
+qc.append(RZGate(0.01493217662053715), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[13]])
+
+qc.append(RZGate(0.0298643532410743), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[14]])
+
+qc.append(RZGate(0.0597287064821486), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[15]])
+
+qc.append(RZGate(0.1194574129642972), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[16]])
+
+qc.append(RZGate(0.2389148259285944), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[17]])
+
+qc.append(RZGate(0.4778296518571888), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[18]])
+
+qc.append(RZGate(0.05226261817188003), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[9], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[11]])
+
+qc.append(RZGate(8.581710701458131e-05), [q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[11]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[12]])
+
+qc.append(RZGate(0.00017163421402916263), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[13]])
+
+qc.append(RZGate(0.00034326842805832526), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[14]])
+
+qc.append(RZGate(0.0006865368561166505), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[15]])
+
+qc.append(RZGate(0.001373073712233301), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[16]])
+
+qc.append(RZGate(0.002746147424466602), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[17]])
+
+qc.append(RZGate(0.005492294848933204), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[18]])
+
+qc.append(RZGate(0.0006007197491020692), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[10], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[12]])
+
+qc.append(RZGate(0.00034326842805832526), [q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[12]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[13]])
+
+qc.append(RZGate(0.0006865368561166505), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[14]])
+
+qc.append(RZGate(0.001373073712233301), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[15]])
+
+qc.append(RZGate(0.002746147424466602), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[16]])
+
+qc.append(RZGate(0.005492294848933204), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[17]])
+
+qc.append(RZGate(0.010984589697866408), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[18]])
+
+qc.append(RZGate(0.0012014394982041384), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[11], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[13]])
+
+qc.append(RZGate(0.001373073712233301), [q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[13]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[14]])
+
+qc.append(RZGate(0.002746147424466602), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[15]])
+
+qc.append(RZGate(0.005492294848933204), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[16]])
+
+qc.append(RZGate(0.010984589697866408), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[17]])
+
+qc.append(RZGate(0.021969179395732816), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[18]])
+
+qc.append(RZGate(0.002402878996408277), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[12], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[14]])
+
+qc.append(RZGate(0.005492294848933204), [q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[14]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[15]])
+
+qc.append(RZGate(0.010984589697866408), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[16]])
+
+qc.append(RZGate(0.021969179395732816), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[17]])
+
+qc.append(RZGate(0.04393835879146563), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[18]])
+
+qc.append(RZGate(0.004805757992816554), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[13], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[15]])
+
+qc.append(RZGate(0.021969179395732816), [q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[15]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[16]])
+
+qc.append(RZGate(0.04393835879146563), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[17]])
+
+qc.append(RZGate(0.08787671758293127), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[18]])
+
+qc.append(RZGate(0.009611515985633107), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[14], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[15], q[16]])
+
+qc.append(RZGate(0.08787671758293127), [q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[15], q[16]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[15], q[17]])
+
+qc.append(RZGate(0.17575343516586253), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[15], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[15], q[18]])
+
+qc.append(RZGate(0.019223031971266215), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[15], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[16], q[17]])
+
+qc.append(RZGate(0.35150687033172506), [q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[16], q[17]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[16], q[18]])
+
+qc.append(RZGate(0.03844606394253243), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[16], q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[17], q[18]])
+
+qc.append(RZGate(0.07689212788506486), [q[18]])
+
+qc.append(XGate().control(1, ctrl_state='1'), [q[17], q[18]])
 
 qc.append(RXGate(1.5707963267948966), [q[0]])
 
@@ -366,6 +1158,24 @@ qc.append(RXGate(1.5707963267948966), [q[8]])
 
 qc.append(RXGate(1.5707963267948966), [q[9]])
 
+qc.append(RXGate(1.5707963267948966), [q[10]])
+
+qc.append(RXGate(1.5707963267948966), [q[11]])
+
+qc.append(RXGate(1.5707963267948966), [q[12]])
+
+qc.append(RXGate(1.5707963267948966), [q[13]])
+
+qc.append(RXGate(1.5707963267948966), [q[14]])
+
+qc.append(RXGate(1.5707963267948966), [q[15]])
+
+qc.append(RXGate(1.5707963267948966), [q[16]])
+
+qc.append(RXGate(1.5707963267948966), [q[17]])
+
+qc.append(RXGate(1.5707963267948966), [q[18]])
+
 qc.measure(q[0], c[0])
 
 qc.measure(q[1], c[1])
@@ -386,6 +1196,24 @@ qc.measure(q[8], c[8])
 
 qc.measure(q[9], c[9])
 
+qc.measure(q[10], c[10])
+
+qc.measure(q[11], c[11])
+
+qc.measure(q[12], c[12])
+
+qc.measure(q[13], c[13])
+
+qc.measure(q[14], c[14])
+
+qc.measure(q[15], c[15])
+
+qc.measure(q[16], c[16])
+
+qc.measure(q[17], c[17])
+
+qc.measure(q[18], c[18])
+
 
 # Draw
 print(qc.draw())
@@ -395,97 +1223,116 @@ print(qc.draw())
 print("Simulating circuit with Aer Simulator...")
 simulator = AerSimulator()
 transpiled_qc = transpile(qc, simulator)
-result = simulator.run(transpiled_qc, shots=1024).result()
+result = simulator.run(transpiled_qc, shots=2048).result()
 counts = result.get_counts()
 print("Counts:", counts)
 
-# ==========================================
-# DOMAIN TERMS DECODING & VALIDATION (T3)
-# ==========================================
-print("\n--- Domain Validation and Probability Analysis ---")
 
-qubo_vars = ['s_1', 's_2', 's_3', 's_4', 's_5', 'x_A', 'x_B', 'x_C', 'x_D', 'x_E']
-total_shots = sum(counts.values())
+# ================================================================
+# GENERATED T3 DOMAIN DECODING + INDEPENDENT CLASSICAL BASELINE
+# ================================================================
+from itertools import combinations as _tacs_combinations
+_tacs_qubo_vars = ['x_A', 'x_B', 'x_C', 'x_D', 'x_E', 'x_F', 'x_G', 'x_H', 'x_I', 'x_J', 's_1', 's_2', 's_3', 's_4', 's_5', 's_6', 's_7', 's_8', 's_9']
+_tacs_projects = {'A': {'cost': 55, 'benefit': 95}, 'B': {'cost': 10, 'benefit': 4}, 'C': {'cost': 47, 'benefit': 60}, 'D': {'cost': 5, 'benefit': 32}, 'E': {'cost': 4, 'benefit': 23}, 'F': {'cost': 50, 'benefit': 72}, 'G': {'cost': 8, 'benefit': 80}, 'H': {'cost': 61, 'benefit': 62}, 'I': {'cost': 85, 'benefit': 65}, 'J': {'cost': 87, 'benefit': 46}}
+_tacs_budget = 269
+_tacs_slack_weights = [1, 2, 4, 8, 16, 32, 64, 128, 14]
 
-# --- DYNAMIC PROBLEM DATA ---
-# Injected directly from the MDE Problem Model (problem_DSL_object_diagram.py)
-projects_data = {
-    'A': {'cost': 12, 'benefit': 24},
-    'B': {'cost': 7, 'benefit': 13},
-    'C': {'cost': 11, 'benefit': 23},
-    'D': {'cost': 8, 'benefit': 15},
-    'E': {'cost': 9, 'benefit': 16},
-}
-max_budget = 26
+_tacs_project_ids = tuple(sorted(_tacs_projects))
+_tacs_total_shots = sum(counts.values())
+if _tacs_total_shots <= 0:
+    raise ValueError("Aer returned no measurement counts")
 
-# Aggregate counts by decoded domain solution
-aggregated_results = {}
+# Classical exhaustive search. Independent of any measured bitstring.
+_tacs_optimum = -1
+_tacs_optimal_selections = set()
+for _r in range(len(_tacs_project_ids) + 1):
+    for _choice in _tacs_combinations(_tacs_project_ids, _r):
+        _cost = sum(_tacs_projects[_p]["cost"] for _p in _choice)
+        if _cost > _tacs_budget:
+            continue
+        _benefit = sum(_tacs_projects[_p]["benefit"] for _p in _choice)
+        if _benefit > _tacs_optimum:
+            _tacs_optimum = _benefit
+            _tacs_optimal_selections = {_choice}
+        elif _benefit == _tacs_optimum:
+            _tacs_optimal_selections.add(_choice)
+assert _tacs_optimum >= 0
 
-for bitstring, count in counts.items():
-    # Read Little Endian
-    reversed_bitstring = bitstring[::-1]
-    
-    selected_items = []
-    for i, bit in enumerate(reversed_bitstring):
-        if bit == '1' and i < len(qubo_vars):
-            var_name = qubo_vars[i]
-            if var_name.startswith('x_'):
-                selected_items.append(var_name.split('_')[1])
-            elif not var_name.startswith('s_'):
-                selected_items.append(var_name)
-                
-    # Sort items to correctly group identical combinations (e.g. 'C, B' and 'B, C')
-    selected_items.sort()
-    solution_tuple = tuple(selected_items)
-    
-    if solution_tuple in aggregated_results:
-        aggregated_results[solution_tuple] += count
-    else:
-        aggregated_results[solution_tuple] = count
+# Counts in Qiskit are big-endian display strings; bit i is counted
+# from the RIGHT. T2 measures qubit i into classical bit i.
+_tacs_domain_counts = {}
+_tacs_domain_feasible = 0
+_tacs_full_qubo_feasible = 0
+_tacs_optimal_domain = 0
+_tacs_optimal_full_qubo = 0
+for _display_bits, _frequency in counts.items():
+    _bits = ''.join(_ch for _ch in _display_bits if _ch in '01')
+    if len(_bits) != len(_tacs_qubo_vars):
+        raise ValueError(f"Unexpected Qiskit bitstring: {_display_bits!r}")
+    _chosen = []
+    _unused_budget = 0
+    for _i, _bit in enumerate(reversed(_bits)):
+        if _bit == '0':
+            continue
+        _name = _tacs_qubo_vars[_i]
+        if _name.startswith('x_'):
+            _chosen.append(_name[2:])
+        elif _name.startswith('s_'):
+            _index = int(_name[2:]) - 1
+            _unused_budget += _tacs_slack_weights[_index]
+        else:
+            raise ValueError(f"Unexpected QUBO variable: {_name!r}")
+    _selection = tuple(sorted(_chosen))
+    _cost = sum(_tacs_projects[_p]['cost'] for _p in _selection)
+    _is_domain_feasible = _cost <= _tacs_budget
+    _is_qubo_feasible = _cost + _unused_budget == _tacs_budget
+    _tacs_domain_counts[_selection] = _tacs_domain_counts.get(_selection, 0) + _frequency
+    if _is_domain_feasible:
+        _tacs_domain_feasible += _frequency
+    if _is_qubo_feasible:
+        _tacs_full_qubo_feasible += _frequency
+    if _selection in _tacs_optimal_selections:
+        _tacs_optimal_domain += _frequency
+        if _is_qubo_feasible:
+            _tacs_optimal_full_qubo += _frequency
 
-# Evaluate all unique solutions found by the quantum circuit
-evaluated_solutions = []
-for solution, count in aggregated_results.items():
-    total_cost = sum(projects_data.get(item, {'cost': 0})['cost'] for item in solution)
-    total_benefit = sum(projects_data.get(item, {'benefit': 0})['benefit'] for item in solution)
-    
-    is_valid = total_cost <= max_budget
-    prob = (count / total_shots) * 100
-    
-    evaluated_solutions.append({
-        'items': solution,
-        'cost': total_cost,
-        'benefit': total_benefit,
-        'is_valid': is_valid,
-        'count': count,
-        'prob': prob
-    })
+_tacs_measured_feasible = [
+    _selection for _selection in _tacs_domain_counts
+    if sum(_tacs_projects[_p]['cost'] for _p in _selection) <= _tacs_budget
+]
+_tacs_best_measured = max(
+    _tacs_measured_feasible,
+    key=lambda _sel: (sum(_tacs_projects[_p]['benefit'] for _p in _sel),
+                      -sum(_tacs_projects[_p]['cost'] for _p in _sel)),
+    default=None,
+)
+_tacs_best_measured_benefit = (
+    sum(_tacs_projects[_p]['benefit'] for _p in _tacs_best_measured)
+    if _tacs_best_measured is not None else None
+)
+_tacs_ratio = (
+    (_tacs_best_measured_benefit / _tacs_optimum if _tacs_optimum > 0 else 1.0)
+    if _tacs_best_measured_benefit is not None else 0.0
+)
 
-# ---------------------------------------------------------
-# HIGHLIGHT THE TRUE OPTIMAL SOLUTION (CLASSICAL BASELINE)
-# ---------------------------------------------------------
-# Filter valid solutions and find the one with the absolute maximum benefit
-valid_solutions = [s for s in evaluated_solutions if s['is_valid']]
-
-if valid_solutions:
-    best_valid = max(valid_solutions, key=lambda x: x['benefit'])
-    sol_str = ', '.join(best_valid['items']) if best_valid['items'] else 'None'
-    
-    print(f"\n🏆 TRUE OPTIMAL SOLUTION MEASURED:")
-    print(f"  -> Items selected: [{sol_str}]")
-    print(f"  -> Cost: {best_valid['cost']} (Max: {max_budget}) | Benefit: {best_valid['benefit']}")
-    print(f"  -> Quantum Probability: {best_valid['prob']:.2f}% (measured {best_valid['count']} times)")
-else:
-    print("\n❌ No valid solutions were measured by the quantum circuit.")
-
-# ---------------------------------------------------------
-# SHOW MOST FREQUENT QUANTUM STATES
-# ---------------------------------------------------------
-# Sort by highest quantum probability (count) to see what the circuit favored
-evaluated_solutions.sort(key=lambda x: x['count'], reverse=True)
-
-print(f"\n--- Top 5 Most Frequent Quantum States ---")
-for s in evaluated_solutions[:5]:
-    status = "✅ Valid" if s['is_valid'] else "❌ INVALID (Overweight)"
-    sol_str = ', '.join(s['items']) if s['items'] else 'None'
-    print(f"  -> [{sol_str}] : {s['prob']:.2f}% | {status} | Cost: {s['cost']}, Benefit: {s['benefit']}")
+print("\n=== Classical baseline (exact brute force) ===")
+print(f"Budget: {_tacs_budget}")
+print(f"Optimal benefit: {_tacs_optimum}")
+print(f"Optimal project selections: {sorted(_tacs_optimal_selections)}")
+print("\n=== QAOA measurement validation ===")
+print(f"Shots: {_tacs_total_shots}")
+print(f"Best feasible selection measured: {_tacs_best_measured}")
+print(f"Best measured benefit: {_tacs_best_measured_benefit}")
+print(f"Approximation ratio (best measured / optimum): {_tacs_ratio:.4f}")
+print(f"Domain-feasible observations: {100*_tacs_domain_feasible/_tacs_total_shots:.2f}%")
+print(f"QUBO-feasible observations (consistent slack): {100*_tacs_full_qubo_feasible/_tacs_total_shots:.2f}%")
+print(f"Optimal project selections measured: {100*_tacs_optimal_domain/_tacs_total_shots:.2f}%")
+print(f"Optimal full QUBO states measured: {100*_tacs_optimal_full_qubo/_tacs_total_shots:.2f}%")
+print("\nTop 5 measured project selections (slack aggregated):")
+for _selection, _count in sorted(
+    _tacs_domain_counts.items(), key=lambda kv: (-kv[1], kv[0])
+)[:5]:
+    _cost = sum(_tacs_projects[_p]['cost'] for _p in _selection)
+    _benefit = sum(_tacs_projects[_p]['benefit'] for _p in _selection)
+    print(f"  {_selection}: {_count/_tacs_total_shots:.2%}, cost={_cost}, "
+          f"benefit={_benefit}, feasible={_cost <= _tacs_budget}")
