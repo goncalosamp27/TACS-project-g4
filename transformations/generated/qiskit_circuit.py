@@ -1223,7 +1223,7 @@ print(qc.draw())
 print("Simulating circuit with Aer Simulator...")
 simulator = AerSimulator()
 transpiled_qc = transpile(qc, simulator)
-result = simulator.run(transpiled_qc, shots=2048).result()
+result = simulator.run(transpiled_qc, shots=1024).result()
 counts = result.get_counts()
 print("Counts:", counts)
 

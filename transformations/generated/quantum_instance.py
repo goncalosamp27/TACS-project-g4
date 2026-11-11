@@ -5,9 +5,9 @@ from besser.BUML.metamodel.quantum import (
 
 # T2 traceability: Lucas (2014); Farhi et al. (2014); Nielsen & Chuang (2010).
 qubo_variable_names = ['x_A', 'x_B', 'x_C', 'x_D', 'x_E', 'x_F', 'x_G', 'x_H', 'x_I', 'x_J', 's_1', 's_2', 's_3', 's_4', 's_5', 's_6', 's_7', 's_8', 's_9']
-source_qubo_file = 't1-result-20261110-154615-007805.py'
+source_qubo_file = 't1-result-20261111-153836-178426.py'
 qaoa_depth = 1
-solver_shots = 2048
+solver_shots = 1024
 ising_energy_scale = 4942080.0
 # The constant Ising term contributes only a global phase and can be omitted.
 ising_constant = 9307170.5

@@ -130,12 +130,9 @@ def main() -> None:
         parser.error(f"Solver configuration not found: {args.config}")
 
     t2 = choose_script(args.t2_script, (
-        "t2_solution_to_quantum-fix.py",
         "t2_solution_to_quantum.py",
-        "t2_solution_to_quantum_no_config.py",
     ))
     t3 = choose_script(args.t3_script, (
-        "t3_quantum_to_qiskit-fix.py",
         "t3_quantum_to_qiskit.py",
     ))
     print(f"T2: {t2.name} | T3: {t3.name} | Python: {sys.executable}")
